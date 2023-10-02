@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+
+    def index
+        render json: User.all
+    end
     def show
         user = User.find_by(id: session[:user_id])
         if user
@@ -16,5 +20,10 @@ class UsersController < ApplicationController
         else
             render json: {errors: user.errors_full_messages}, status: :unprocessable_entiry
         end
+    end
+
+    private
+    def user_params
+        params.permit(:username, :password)
     end
 end
