@@ -12,13 +12,28 @@ const UserProvider = ({ children }) => {
             .then(data => {
                 console.log(data)
                 setUser(data)
+                setLoggedIn(true)
             })
     }, [])
 
+    const login = (user) => {
+        setUser(user)
+        setLoggedIn(true)
+
+    }
+    const logout = () => {
+        setUser({})
+        setLoggedIn(false)
+    }
+
+    const signup = () => {
+        setUser(user)
+        setLoggedIn(true)
+    }
 
 
     return (
-        <UserContext.Provider value={{ user, errors, setErrors, loggedIn }}>
+        <UserContext.Provider value={{ user, errors, setErrors, loggedIn, login, logout, signup }}>
             {children}
         </UserContext.Provider>
     )
