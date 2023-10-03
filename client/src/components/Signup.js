@@ -47,17 +47,17 @@ const Signup = () => {
         <div>
             <form onSubmit={handleSubmit}>
                 <label>Username</label>
-                <input name="" value={formData.username} onChange={handleChange} />
+                <input name="username" value={formData.username} onChange={handleChange} />
                 <label>Email</label>
-                <input name="" value={formData.email} onChange={handleChange} />
+                <input name="email" value={formData.email} onChange={handleChange} />
                 <label>Password</label>
-                <input name="" value={formData.password} onChange={handleChange} />
+                <input name="password" value={formData.password} onChange={handleChange} />
                 <label>Name</label>
-                <input name="" value={formData.name} onChange={handleChange} />
+                <input name="name" value={formData.name} onChange={handleChange} />
                 <label>Avatar</label>
-                <input name="" value={formData.avatar} onChange={handleChange} />
+                <input name="avatar" value={formData.avatar} onChange={handleChange} />
                 <label>Bio</label>
-                <input name="" value={formData.bio} onChange={handleChange} />
+                <input name="bio" value={formData.bio} onChange={handleChange} />
                 <input type="submit" />
             </form>
             <ul>{errors}</ul>

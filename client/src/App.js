@@ -9,6 +9,7 @@ import Posts from './components/Posts';
 import NewPost from './components/NewPost';
 import Comments from './components/Comments';
 import Home from './components/Home';
+import NewComment from './components/NewComment';
 function App() {
   const [posts, setPosts] = useState([])
 
@@ -21,16 +22,20 @@ function App() {
       })
   }, [])
 
+  const addPost = (newPost) => setPosts([...posts, newPost])
+
   return (
     <div>
       <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/posts" element={<Posts posts={posts} setPosts={setPosts} />} />
-        <Route path="/posts/new" element={<NewPost />} />
+        <Route path="/posts" element={<Posts posts={posts} setPosts={setPosts} addPost={addPost} />} />
+        <Route path="/posts/new" element={<NewPost addPost={addPost} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/comments" element={<Comments />} />
+        <Route path="/posts/:id/comments" element={<NewComment />} />
+
       </Routes>
 
     </div>
