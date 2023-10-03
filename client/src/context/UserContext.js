@@ -5,6 +5,8 @@ const UserProvider = ({ children }) => {
     const [user, setUser] = useState(null)
     const [errors, setErrors] = useState([])
     const [loggedIn, setLoggedIn] = useState(false)
+    const [comments, setComments] = useState([])
+
 
     useEffect(() => {
         fetch('/me')
@@ -13,8 +15,19 @@ const UserProvider = ({ children }) => {
                 console.log(data)
                 setUser(data)
                 setLoggedIn(true)
+                fetchComments()
             })
     }, [])
+
+    const fetchComments = () => {
+        fetch("/comments")
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                setComments(data)
+            })
+    }
+
 
     const login = (user) => {
         setUser(user)
@@ -33,7 +46,7 @@ const UserProvider = ({ children }) => {
 
 
     return (
-        <UserContext.Provider value={{ user, errors, setErrors, loggedIn, login, logout, signup }}>
+        <UserContext.Provider value={{ user, errors, setErrors, loggedIn, login, logout, signup, comments }}>
             {children}
         </UserContext.Provider>
     )

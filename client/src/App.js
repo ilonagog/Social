@@ -6,7 +6,8 @@ import NavBar from './components/NavBar';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Posts from './components/Posts';
-
+import NewPost from './components/NewPost';
+import Comments from './components/Comments';
 function App() {
   const [posts, setPosts] = useState([])
 
@@ -23,9 +24,11 @@ function App() {
     <div>
       <NavBar />
       <Routes>
-        <Route path="/posts" element={<Posts posts={posts} setPosts={setPosts}/>} />
+        <Route path="/posts" element={<Posts posts={posts} setPosts={setPosts} />} />
+        <Route path="/posts/new" element={<NewPost />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/comments" element={<Comments />} />
       </Routes>
 
     </div>

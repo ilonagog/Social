@@ -1,11 +1,10 @@
 import React from 'react'
 import PostCard from './PostCard'
-
-const Posts = ({ posts, setposts }) => {
-    console.log(posts)
+const Posts = ({ posts, setPosts }) => {
     const postsList = posts.map(post => {
-        console.log(post)
-        return (<PostCard key={post.id} post={post} />)
+        return (
+            <PostCard key={post.id} post={post} />
+        )
     })
     return (
         <div>
