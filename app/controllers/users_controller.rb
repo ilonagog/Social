@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     def index
         render json: User.all
     end
-    def show
+    def show #me-current user
         user = User.find_by(id: session[:user_id])
         if user
             render json: user, status: :Ok
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
         end
     end
 
-    def create
+    def create #signup create a new user
         user = User.create!(user_params)
         if user.valid?
             session[:user_id]= user.id

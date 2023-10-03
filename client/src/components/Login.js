@@ -11,7 +11,20 @@ const Login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        fetch("/login")
+        fetch("/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(formData)
+        })
+            .then((response) => {
+                if (response.ok) {
+                    response.json().then((data) => login(data))
+                } else {
+                    response.json().then((err) => setErrors(err.errors))
+                }
+            })
 
     }
     const handleChange = (e) => {
