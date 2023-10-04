@@ -13,7 +13,8 @@ const PostCard = ({ post }) => {
     const commentsList = comments.map((comment) => {
         return (
             <div>
-                <h3>{comment.content}</h3>
+                <h3>{comment.username}: </h3>
+                <h3>Comments:  {comment.content}</h3>
             </div>
         )
     })

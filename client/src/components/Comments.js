@@ -4,11 +4,10 @@ import CommentCard from './CommentCard'
 
 const Comments = () => {
     const { comments } = useContext(UserContext)
-    const commentsList = comments.map(comment =>
-        <CommentCard key={comment.id} comment={comment} />)
+    const commentsList = comments.map(comment => <CommentCard key={comment.id} comment={comment} />)
     return (
         <div>
-            {commentsList}
+            <ul>{commentsList}</ul>
         </div>
     )
 }

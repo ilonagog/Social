@@ -34,7 +34,7 @@ const Signup = () => {
                 if (!user.errors) {
                     console.log(user)
                     signup(user)
-                    // navigate("/")
+                    navigate("/")
                 } else {
                     const errorList = user.errors.map((e, i) => <li key={i}>{e}</li>)
                     setErrors(errorList)
