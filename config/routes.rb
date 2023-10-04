@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   
   resources :messages
   resources :comments
-  resources :posts
+  resources :posts, only:[:index, :show, :create] do
+    resources :comments, only: [:create]
+  end
   resources :users
 
   get "/me", to: "users#show"

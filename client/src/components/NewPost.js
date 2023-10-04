@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 const NewPost = ({ addPost }) => {
     const [errors, setErrors] = useState([])
@@ -7,6 +7,7 @@ const NewPost = ({ addPost }) => {
         title: "",
         image: ""
     })
+    const navigate = useNavigate()
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -27,9 +28,10 @@ const NewPost = ({ addPost }) => {
                     response.json().then((newPost) => {
                         addPost(newPost)
                         setFormData({
-
+                            title: "",
+                            image: ""
                         })
-                        Navigate("/posts")
+                        navigate("/posts")
                     })
                 } else {
                     response.json().then((err) => {
