@@ -5,9 +5,9 @@ import { Link } from 'react-router-dom'
 
 const PostCard = ({ post }) => {
     const [viewForm, setViewForm] = useState(false)
-    console.log(post)
+    // console.log(post)
     const { title, image, id, comments } = post
-    console.log(comments)
+    // console.log(comments)
 
     const commentsList = comments.map((comment) => {
         return (

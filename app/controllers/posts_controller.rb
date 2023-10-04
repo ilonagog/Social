@@ -1,4 +1,8 @@
 class PostsController < ApplicationController
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
+    skip_before_action :authorize, only: [:index, :show, :create, :destination_reviews]
+    wrap_parameters format: []
     def index 
         render json: Post.all
     end
@@ -14,6 +18,13 @@ class PostsController < ApplicationController
     private
     def post_params
         params.permit(:title, :image)
+    end
+    def render_unprocessable_entity_response(exception)
+        render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity
+    end
+
+    def render_not_found_response
+        render json: { error: "Post not found" }, status: :not_found
     end
     
 end

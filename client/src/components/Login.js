@@ -10,6 +10,7 @@ const Login = () => {
     })
     const { login } = useContext(UserContext)
     const navigate = useNavigate()
+
     const handleSubmit = (e) => {
         e.preventDefault()
         fetch("/login", {
@@ -21,13 +22,21 @@ const Login = () => {
         })
             .then((response) => {
                 if (response.ok) {
-                    response.json().then((data) => {
-                        console.log(data)
-                        login(data)
-                        navigate("/")
-                    })
+                    response.json().then((userInfo) =>
+
+                        login(userInfo)
+                    )
+                    navigate("/")
                 } else {
-                    response.json().then((err) => setErrors(err.errors))
+
+                    response.json().then((err) => {
+                        if (err.errors) {
+                            setErrors(Object.values(err.errors))
+                        } else {
+                            setErrors([err.error])
+                        }
+
+                    })
                 }
             })
 
@@ -48,13 +57,11 @@ const Login = () => {
                 <input name="password" value={formData.password} onChange={handleChange} />
                 <input type="submit" />
             </form>
-            {errors.length > 0 && (
-                <ul style={{ color: "red" }}>
-                    {errors.map((error) => (
-                        <li key={error}>{error}</li>
-                    ))}
-                </ul>
-            )}
+            {errors.map((err) => (
+                <li style={{ color: "black" }} key={err}>
+                    {err}
+                </li>
+            ))}
         </div>
     )
 }

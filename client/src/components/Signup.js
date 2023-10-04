@@ -17,6 +17,11 @@ const Signup = () => {
     const { signup } = useContext(UserContext)
     const handleSubmit = (e) => {
         e.preventDefault()
+        // if (!formData.username || !formData.email || !formData.password || !formData.name || !formData.avatar || !formData.bio) {
+        //     // Display an error message or handle the error as needed
+        //     console.error("Username, email, and password are required.");
+        //     return;
+        // }
         fetch("/signup", {
             method: "POST",
             header: {
@@ -29,7 +34,7 @@ const Signup = () => {
                 if (!user.errors) {
                     console.log(user)
                     signup(user)
-                    navigate("/")
+                    // navigate("/")
                 } else {
                     const errorList = user.errors.map((e, i) => <li key={i}>{e}</li>)
                     setErrors(errorList)
@@ -40,7 +45,7 @@ const Signup = () => {
     const handleChange = (e) => {
         setFormdata({
             ...formData,
-            [e.tagret.name]: e.target.value
+            [e.target.name]: e.target.value
         })
     }
     return (
@@ -61,6 +66,7 @@ const Signup = () => {
                 <input type="submit" />
             </form>
             <ul>{errors}</ul>
+
         </div>
     )
 }

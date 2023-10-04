@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 const UserContext = React.createContext();
 
 const UserProvider = ({ children }) => {
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState({})
     const [errors, setErrors] = useState([])
     const [loggedIn, setLoggedIn] = useState(false)
     const [comments, setComments] = useState([])
