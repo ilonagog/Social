@@ -4,7 +4,7 @@ class CommentSerializer < ActiveModel::Serializer
   belongs_to :post
 
   def username
-    # byebug
+    
     object.user.name
   end
 end

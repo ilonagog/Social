@@ -11,6 +11,8 @@ import Comments from './components/Comments';
 import Home from './components/Home';
 import NewComment from './components/NewComment';
 import Profile from './components/Profile';
+import Messages from './components/Messages';
+
 function App() {
   const [posts, setPosts] = useState([])
 
@@ -37,6 +39,7 @@ function App() {
         <Route path="/comments" element={<Comments />} />
         <Route path="/posts/:id/comments" element={<NewComment />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/messages" element={<Messages />} />
 
 
       </Routes>

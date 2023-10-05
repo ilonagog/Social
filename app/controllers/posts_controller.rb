@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
     rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
-    skip_before_action :authorize, only: [:index, :show, :create, :destination_reviews]
+    skip_before_action :authorize, only: [:index, :show]
     wrap_parameters format: []
     def index 
         render json: Post.all
@@ -12,6 +12,7 @@ class PostsController < ApplicationController
     end
 
     def create 
+        # user = User.find(params[:id])
         post = Post.create!(post_params)
         render json: post, status: :created
     end

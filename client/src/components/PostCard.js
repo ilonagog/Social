@@ -9,7 +9,8 @@ const PostCard = ({ post }) => {
     // console.log(post)
     const { title, image, id, comments } = post
     // console.log(comments)
-    const { loggedIn } = useContext(UserContext)
+    const { user, setUser, loggedIn } = useContext(UserContext)
+
     const commentsList = comments.map((comment) => {
         return (
             <div>

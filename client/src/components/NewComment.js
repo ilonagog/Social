@@ -1,14 +1,18 @@
-import React, { useState } from 'react'
-import { useParams } from 'react-router-dom'
+import React, { useContext, useState } from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
+import { UserContext } from '../context/UserContext'
+
 
 const NewComment = () => {
+    const { comments, setComments } = useContext(UserContext)
     const [content, setContent] = useState('')
     const [errors, setErrors] = useState([])
     let { id } = useParams()
     id = parseInt(id)
+    const navigate = useNavigate()
     const handleSubmit = (e) => {
         e.preventDefault()
-        const newComment = { ...content }
+        const newComment = { content: content }
         fetch(`/posts/${id}/comments`, {
             method: "POST",
             headers: {
@@ -19,9 +23,13 @@ const NewComment = () => {
             .then((response) => {
                 if (response.ok) {
                     response.json().then((newComment) => {
+                        if (newComment) {
+                            setComments([...comments, newComment])
+                        }
                         console.log(newComment)
-                        setContent()
+                        setContent({ content: "" })
                     })
+                    navigate("/posts")
                 } else {
                     response.json().then((err) => {
                         if (err.errors) {
@@ -37,7 +45,7 @@ const NewComment = () => {
         <div >
             <form onSubmit={handleSubmit}>
                 <label>Content</label>
-                <input name="content" value={content} onChange={(e) => setContent()} />
+                <input name="content" value={content} onChange={(e) => setContent(e.target.value)} />
                 <input type="submit" />
             </form>
             {errors.map((err) => (
