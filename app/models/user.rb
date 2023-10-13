@@ -1,12 +1,13 @@
 class User < ApplicationRecord
     has_many :comments
     has_many :posts, through: :comments
-    validates :username, uniqueness: true, presence: true
-    validates :email, presence: true
-    validates :password, presence: true
-    validates :name, presence: true
-    validates :avatar, presence: true
-    validates :bio, presence: true
+    has_one_attached :avatar
+    # validates :username, uniqueness: true, presence: true
+    # validates :email, presence: true
+    # validates :password, presence: true
+    # validates :name, presence: true
+    # # validates :avatar, presence: true
+    # validates :bio, presence: true
 
     has_secure_password
 

@@ -12,6 +12,7 @@ import Home from './components/Home';
 import NewComment from './components/NewComment';
 import Profile from './components/Profile';
 import Messages from './components/Messages';
+import EditUser from './components/EditUser';
 
 function App() {
   const [posts, setPosts] = useState([])
@@ -33,15 +34,14 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/posts" element={<Posts posts={posts} setPosts={setPosts} addPost={addPost} />} />
-        <Route path="/posts/new" element={<NewPost addPost={addPost} />} />
+        <Route path="/posts/new" element={<NewPost addPost={addPost} posts={posts} setPosts={setPosts} />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/comments" element={<Comments />} />
         <Route path="/posts/:id/comments" element={<NewComment />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/messages" element={<Messages />} />
-
-
+        <Route path="/edit_profile" element={<EditUser />} />
       </Routes>
 
     </div>

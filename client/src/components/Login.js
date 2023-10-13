@@ -23,7 +23,6 @@ const Login = () => {
             .then((response) => {
                 if (response.ok) {
                     response.json().then((userInfo) =>
-
                         login(userInfo)
                     )
                     navigate("/")

@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { UserContext } from '../context/UserContext'
+import React, { useEffect, useState } from 'react'
+// import { UserContext } from '../context/UserContext'
 
 const Messages = () => {
     // const { user } = useContext(UserContext)

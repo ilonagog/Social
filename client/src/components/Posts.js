@@ -3,12 +3,12 @@ import PostCard from './PostCard'
 import NewPost from './NewPost'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
-const Posts = ({ posts, addPost }) => {
+const Posts = ({ posts, addPost, setPosts }) => {
     const [viewForm, setViewForm] = useState(false)
     const { loggedIn } = useContext(UserContext)
     const postsList = posts.map(post => {
         return (
-            <PostCard key={post.id} post={post} addPost={addPost} />
+            <PostCard key={post.id} post={post} addPost={addPost} posts={posts} setPosts={setPosts} />
         )
     })
     const handleClick = (e) => {

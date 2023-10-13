@@ -1,49 +1,5 @@
-// import { Link } from "react-router-dom"
-// import { useNavigate } from 'react-router-dom';
-// import React, { useContext } from 'react';
-// import { UserContext } from "../context/UserContext";
 
-// const NavBar = () => {
-//     const { logout, loggedIn } = useContext(UserContext)
-//     const navigate = useNavigate()
-//     const logoutUser = () => {
-//         fetch("/logout", {
-//             method: "DELETE"
-//         })
-//             .then(() => {
-//                 logout()
-//             })
-//         navigate("/")
-//     }
-//     if (loggedIn) {
-//         return (
-//             <div>
-//                 <Link to="/">Home</Link>
-//                 <Link to="/profile">Profile</Link>
-//                 <Link to="/posts">Posts</Link>
-//                 <Link to="/posts/new">Want to post?</Link>
-//                 <Link to="/messages">Messages</Link>
-//                 <Link to="logout"><button >Logout</button></Link>
-
-//             </div>
-//         )
-//     } else {
-//         return (
-//             <div>
-//                 <Link to="/">Home</Link>
-//                 <Link to="/posts">Posts</Link>
-//                 <Link to="/login">Login</Link>
-//                 <Link to="/signup">Signup</Link>
-//             </div>
-
-//         )
-
-//     }
-// }
-
-// export default NavBar
 import { Link, useNavigate } from "react-router-dom"
-
 import React, { useContext } from 'react';
 import { UserContext } from "../context/UserContext";
 import AppBar from '@mui/material/AppBar';
@@ -52,25 +8,26 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-// import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import me from "../images/me.jpg"
 
-const NavBar = () => {
+
+function NavBar() {
+    const navigate = useNavigate()
     const { logout, loggedIn } = useContext(UserContext)
+    const { user } = useContext(UserContext)
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
-    const { navigate } = useNavigate()
-    const { user } = useContext(UserContext)
-    const { avatar } = user
 
-    // const handleOpenNavMenu = (event) => {
-    //     setAnchorElNav(event.currentTarget);
-    // };
+    const handleOpenNavMenu = (event) => {
+        setAnchorElNav(event.currentTarget);
+    };
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
@@ -82,6 +39,7 @@ const NavBar = () => {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
 
     const logoutUser = () => {
         fetch("/logout", {
@@ -114,28 +72,19 @@ const NavBar = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            <Link to="/">Home</Link>
+                            Social
                         </Typography>
-                        < AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                        < Typography
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'flex', md: 'none' },
-                                flexGrow: 1,
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            LOGO
-                        </Typography >
-                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                            <IconButton
+                                size="large"
+                                aria-label="account of current user"
+                                aria-controls="menu-appbar"
+                                aria-haspopup="true"
+                                onClick={handleOpenNavMenu}
+                                color="inherit"
+                            >
+                                <MenuIcon />
+                            </IconButton>
                             <Menu
                                 id="menu-appbar"
                                 anchorEl={anchorElNav}
@@ -153,7 +102,55 @@ const NavBar = () => {
                                 sx={{
                                     display: { xs: 'block', md: 'none' },
                                 }}
-                            >   </Menu>
+                            >
+                                <MenuItem onClick={handleCloseNavMenu}>
+                                    <Button
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        <Link to="/">Home</Link>
+                                    </Button>
+                                    <Button
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        <Link to="/posts">Posts</Link>
+                                    </Button>
+                                    <Button
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        <Link to="/messages">Messages</Link>
+                                    </Button>
+                                </MenuItem>
+                            </Menu>
+                        </Box>
+                        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                        <Typography
+                            variant="h5"
+                            noWrap
+                            component="a"
+                            href="#app-bar-with-responsive-menu"
+                            sx={{
+                                mr: 2,
+                                display: { xs: 'flex', md: 'none' },
+                                flexGrow: 1,
+                                fontFamily: 'monospace',
+                                fontWeight: 700,
+                                letterSpacing: '.3rem',
+                                color: 'inherit',
+                                textDecoration: 'none',
+                            }}
+                        >
+                            Social
+                        </Typography>
+                        <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                            <Button
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                <Link to="/">Home</Link>
+                            </Button>
                             <Button
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
@@ -170,7 +167,7 @@ const NavBar = () => {
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt={avatar} src={avatar} />
+                                    <Avatar alt="me" src={user.image_url} />
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -190,26 +187,24 @@ const NavBar = () => {
                                 onClose={handleCloseUserMenu}
                             >
                                 <MenuItem onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center" variant="overline" display="block">
-                                        <Button
-                                            onClick={handleCloseNavMenu}
-                                            sx={{ my: 2, color: 'white', display: 'block' }}
-                                        >
-                                            <Link to="/profile">Profile</Link>
-                                        </Button>
-                                        <Button onClick={logoutUser}
-                                            // onClick={handleCloseNavMenu}
-                                            sx={{ my: 2, color: 'white', display: 'block' }}
-                                        >
-                                            <Link to="/logout">Logout</Link>
-                                        </Button>
-                                    </Typography>
+                                    <Button
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        <Link to="/profile">Profile</Link>
+                                    </Button>
+                                    <Button
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        <Button onClick={logoutUser}>Logout</Button>
+                                    </Button>
                                 </MenuItem>
                             </Menu>
                         </Box>
-                    </Toolbar >
-                </Container >
-            </AppBar >
+                    </Toolbar>
+                </Container>
+            </AppBar>
         );
     } else {
         return (
@@ -232,10 +227,61 @@ const NavBar = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            <Link to="/">Home</Link>
+                            Social
                         </Typography>
-                        < AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
-                        < Typography
+                        <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
+                            <IconButton
+                                size="large"
+                                aria-label="account of current user"
+                                aria-controls="menu-appbar"
+                                aria-haspopup="true"
+                                onClick={handleOpenNavMenu}
+                                color="inherit"
+                            >
+                                <MenuIcon />
+                            </IconButton>
+                            <Menu
+                                id="menu-appbar"
+                                anchorEl={anchorElNav}
+                                anchorOrigin={{
+                                    vertical: 'bottom',
+                                    horizontal: 'left',
+                                }}
+                                keepMounted
+                                transformOrigin={{
+                                    vertical: 'top',
+                                    horizontal: 'left',
+                                }}
+                                open={Boolean(anchorElNav)}
+                                onClose={handleCloseNavMenu}
+                                sx={{
+                                    display: { xs: 'block', md: 'none' },
+                                }}
+                            >
+                                <MenuItem onClick={handleCloseNavMenu}>
+                                    <Button
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        <Link to="/">Home</Link>
+                                    </Button>
+                                    <Button
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        <Link to="/posts">Posts</Link>
+                                    </Button>
+                                    <Button
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        <Link to="/messages">Messages</Link>
+                                    </Button>
+                                </MenuItem>
+                            </Menu>
+                        </Box>
+                        <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
+                        <Typography
                             variant="h5"
                             noWrap
                             component="a"
@@ -251,9 +297,16 @@ const NavBar = () => {
                                 textDecoration: 'none',
                             }}
                         >
-                            LOGO
-                        </Typography >
+                            Social
+                        </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+                            <Button
+                                onClick={handleCloseNavMenu}
+                                sx={{ my: 2, color: 'white', display: 'block' }}
+                            >
+                                <Link to="/">Home</Link>
+                            </Button>
+
                             <Button
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
@@ -264,7 +317,7 @@ const NavBar = () => {
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                    <Avatar alt="avatar" src={me} />
                                 </IconButton>
                             </Tooltip>
                             <Menu
@@ -284,29 +337,25 @@ const NavBar = () => {
                                 onClose={handleCloseUserMenu}
                             >
                                 <MenuItem onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center" variant="overline" display="block">
-                                        <Button
-                                            onClick={handleCloseNavMenu}
-                                            sx={{ my: 2, color: 'white', display: 'block' }}
-                                        >
-                                            <Link to="/login">Login</Link>
-                                        </Button>
-                                        <Button
-                                            onClick={handleCloseNavMenu}
-                                            sx={{ my: 2, color: 'white', display: 'block' }}
-                                        >
-                                            <Link to="/signup">Signup</Link>
-                                        </Button>
-
-                                    </Typography>
+                                    <Button
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        <Link to="/login">Login</Link>
+                                    </Button>
+                                    <Button
+                                        onClick={handleCloseNavMenu}
+                                        sx={{ my: 2, color: 'white', display: 'block' }}
+                                    >
+                                        <Link to="/signup">Signup</Link>
+                                    </Button>
                                 </MenuItem>
                             </Menu>
                         </Box>
-                    </Toolbar >
-                </Container >
-            </AppBar >
+                    </Toolbar>
+                </Container>
+            </AppBar>
         );
-
     }
 }
 export default NavBar;
