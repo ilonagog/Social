@@ -8,7 +8,7 @@ const Posts = ({ posts, addPost, setPosts }) => {
     const { loggedIn } = useContext(UserContext)
     const postsList = posts.map(post => {
         return (
-            <PostCard key={post.id} post={post} addPost={addPost} posts={posts} setPosts={setPosts} />
+            <PostCard key={post.id} post={post} author={post.user_name} addPost={addPost} posts={posts} setPosts={setPosts} />
         )
     })
     const handleClick = (e) => {
@@ -18,7 +18,7 @@ const Posts = ({ posts, addPost, setPosts }) => {
 
         return (
             <div>
-                <Link to="/posts/new"><button onClick={() => handleClick}>Want to post?</button></Link>
+                <Link to="/posts/new"><button onClick={handleClick}>Want to post?</button></Link>
                 {viewForm ?
                     <NewPost addPost={addPost} />
                     :

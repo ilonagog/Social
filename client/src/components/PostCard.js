@@ -7,19 +7,21 @@ import { IconButton } from '@mui/material';
 // import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import { Button } from '@mui/base';
+import { Button } from '@mui/material'
 import EditComment from './EditComment';
 
 
 const PostCard = ({ post, posts, setPosts }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [toggle, setToggle] = useState(false)
+    const [viewComments, setViewComments] = useState(false)
     const [viewForm, setViewForm] = useState(false)
     // console.log(post)
-    const { title, image_url, id, comments } = post
+    const { title, image_url, id, comments, author } = post
     const navigate = useNavigate()
     // console.log(comments)
-    const { user, setUser, loggedIn } = useContext(UserContext)
+    const { user, setUser, loggedIn, users } = useContext(UserContext)
+    // const isCurrentUserPost = user && user.name === author
+
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
     };
@@ -33,6 +35,16 @@ const PostCard = ({ post, posts, setPosts }) => {
         setAnchorEl(null);
     };
 
+    const handleDeletePost = () => {
+        fetch(`posts/${post.id}`, {
+            method: "DELETE",
+        })
+            .then(() => {
+                const updatePosts = posts.filter((p) => p.id !== post.id)
+                setPosts(updatePosts)
+            })
+    }
+
     const onDeleteComment = (deletedComment) => {
         const onPost = posts.find((post) => post.id === deletedComment.post_id)
         const newPostComments = onPost.comments.filter((comment) => comment.id !== deletedComment.id)
@@ -43,12 +55,15 @@ const PostCard = ({ post, posts, setPosts }) => {
         if (!userCommentList) {
             const newUserPosts = user.posts.filter((post) => post.id !== deletedComment.post_id)
             setUser({ ...user, posts: newUserPosts })
-            navigate(`/posts`)
+            navigate('/posts')
         }
 
     }
     const onEditComment = () => {
 
+    }
+    const toggleViewComments = () => {
+        setViewComments(true)
     }
     const commentsList = comments.map((comment) => {
         if (user) {
@@ -93,17 +108,20 @@ const PostCard = ({ post, posts, setPosts }) => {
                 <div className="post">
                     <div className="postWrapper">
                         <div className="postTop">
-                            <div className="postTopLeft">
-                                <img
-                                    className="postProfileImg"
-                                    src={user.image_url}
-                                    alt=""
-                                />
-                                <span className="postUsername">
-                                    {user.name}
-                                </span>
-                                <span className="postDate">{post.date}</span>
-                            </div>
+                            {(user.id === post.user_id) ?
+                                (<div className="postTopLeft">
+
+                                    <img
+                                        className="postProfileImg"
+                                        src={user.image_url}
+                                        alt=""
+                                    />
+                                    <span className="postUsername">
+                                        {user.name}
+                                    </span>
+                                    <span className="postDate">{post.date}</span>
+                                </div>)
+                                : null}
                             <div className="postTopRight">
                                 <IconButton
                                     aria-label="more"
@@ -120,7 +138,7 @@ const PostCard = ({ post, posts, setPosts }) => {
                                     <MenuItem
                                         onClick={handleClose}>
                                         <Button>Edit Post</Button>
-                                        <Button>Delete Post</Button>
+                                        <Button onClick={handleDeletePost}>Delete Post</Button>
                                     </MenuItem>
                                 </Menu>
 
@@ -132,8 +150,10 @@ const PostCard = ({ post, posts, setPosts }) => {
                         </div>
                         <div className="postBottom">
                             <div className="postBottomRight">
-                                <span onClick={() => setToggle(true)} className="postCommentText"> comments</span>
-                                {!toggle && (<ul>{commentsList}</ul>)}
+                                {viewComments ? <ul>{commentsList}</ul>
+                                    :
+                                    <Button onClick={toggleViewComments} className="postCommentText"> comments</Button>
+                                }
                             </div>
                         </div>
                         {viewForm ?
@@ -159,7 +179,7 @@ const PostCard = ({ post, posts, setPosts }) => {
                                 alt=""
                             />
                             <span className="postUsername">
-                                {user.name}
+                                {author}
                             </span>
                             <span className="postDate">{post.date}</span>
                         </div>
