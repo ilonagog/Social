@@ -1,43 +1,51 @@
-import { Button } from '@mui/base'
-import React, { useContext, useState } from 'react'
-import { UserContext } from '../context/UserContext'
+import React, { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
 const EditUser = () => {
-    const { user } = useContext(UserContext)
+    const { user, setUser } = useContext(UserContext);
     const [userFormData, setUserFormData] = useState({
         username: user.username,
         email: user.email,
         name: user.name,
-        bio: user.bio
+        bio: user.bio,
+    });
+    const navigate = useNavigate();
 
-    })
-
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        fetch(`/users/${user.id}`, {
-            method: "PATCH",
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify(editUser)
-        })
-    }
     const handleChange = (e) => {
         setUserFormData({
             ...userFormData,
-            [e.target.name]: e.target.value
-        })
-    }
+            [e.target.name]: e.target.value,
+        });
+    };
 
-    const editUser = {
-        username: userFormData.username,
-        email: userFormData.email,
-        name: userFormData.name,
-        bio: userFormData.bio
-    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const updatedUser = {
+            username: userFormData.username,
+            email: userFormData.email,
+            name: userFormData.name,
+            bio: userFormData.bio,
+        };
+
+        fetch(`/users/${user.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json',
+                Accept: 'application/json',
+            },
+            body: JSON.stringify(updatedUser),
+        })
+            .then((resp) => {
+
+                resp.json().then((data) => setUser(data));
+                navigate('/profile');
+
+            });
+    };
+
     return (
         <div>
-
             <form onSubmit={handleSubmit}>
                 <label>Username</label>
                 <input name="username" value={userFormData.username} onChange={handleChange} />
@@ -49,10 +57,9 @@ const EditUser = () => {
                 <input name="bio" value={userFormData.bio} onChange={handleChange} />
                 <input type="submit" />
             </form>
-
-
         </div>
-    )
-}
+    );
+};
 
-export default EditUser
+export default EditUser;
+

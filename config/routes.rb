@@ -1,13 +1,23 @@
 Rails.application.routes.draw do
   
-  resources :messages
+  # resources :messages, only: [:index, :create]
+  get '/messages', to: 'messages#index'
+  post '/messages', to: 'messages#create'
+
   resources :comments
   resources :posts  do
     resources :comments, only: [:create]
   end
-  resources :users
-  get "/chat", to: "messages#chat"
+  resources :users, only: [:index, :show, :update] do
+    resources :messages, only: [:create]
+   
+  end
+  
+  get '/users/:id/messages', to: 'users#user_messages' 
+  
 
+  get "/chat", to: "messages#chat"
+  # get "users/:id/messages", to: "users#"
   get "/me", to: "users#show"
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"

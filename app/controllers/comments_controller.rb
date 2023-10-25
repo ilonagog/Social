@@ -15,8 +15,6 @@ class CommentsController < ApplicationController
         
          user = find_user_by_session_id
          comment = user.comments.create!(comment_params)
-        # @post= Post.find(params[:post_id])
-        # @comment= @post.comments.create!(comment_params)
         render json: comment, status: :created
     end
 

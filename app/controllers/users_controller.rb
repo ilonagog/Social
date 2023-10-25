@@ -3,7 +3,7 @@ class UsersController < ApplicationController
     def index
         render json: User.all
     end
-    def show #me-current user
+    def show #current user
         user = User.find_by(id: session[:user_id])
         if user
             render json: user, status: :ok
@@ -12,7 +12,8 @@ class UsersController < ApplicationController
         end
     end
 
-    def create #signup create a new user
+
+    def create #signup ,create a new user
         user = User.create!(user_params)
         if user.valid?
             session[:user_id]= user.id
@@ -22,8 +23,28 @@ class UsersController < ApplicationController
         end
     end
 
+      
+    def update #update user title
+        user = User.find_by(id: session[:user_id])
+        user.update(user_params)
+        if user
+          render json: user, status: :accepted
+        end
+    end
+
+  
+    def user_messages # should see messages for a specific user
+        user = User.find(params[:id])
+        # byebug
+        messages = user.messages 
+        render json: messages
+    end
+      
+
     private
     def user_params
         params.permit(:username, :password, :email,:name, :avatar, :bio )
     end
+
+    
 end

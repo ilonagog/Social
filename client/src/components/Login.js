@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { UserContext } from "../context/UserContext"
+import mobiscroll from '@mobiscroll/react-lite';
+import "@mobiscroll/react-lite/dist/css/mobiscroll.min.css";
 
 const Login = () => {
     const [errors, setErrors] = useState([])
@@ -49,21 +51,46 @@ const Login = () => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="username">Username</label>
-                <input name="username" value={formData.username} onChange={handleChange} />
-                <label htmlFor="password">Password</label>
-                <input name="password" value={formData.password} onChange={handleChange} />
-                <input type="submit" />
-            </form>
-            {errors.map((err) => (
-                <li style={{ color: "black" }} key={err}>
-                    {err}
-                </li>
-            ))}
+            <div className='form'>
+                <mobiscroll.Form theme="mobiscroll" onSubmit={handleSubmit} className='form'>
+                    <div className="mbsc-row">
+                        <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
+                            <mobiscroll.Input
+                                inputStyle="box"
+                                labelStyle="floating"
+                                placeholder="Enter your username"
+                                value={formData.username}
+                                name="username"
+                                onChange={handleChange}
+                            >
+                                Username
+                            </mobiscroll.Input>
+                        </div>
+                        <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
+                            <mobiscroll.Input
+                                inputStyle="box"
+                                labelStyle="floating"
+                                type="password"
+                                passwordToggle={formData.password === true}
+                                placeholder="Enter your password"
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                            >
+                                Password
+                            </mobiscroll.Input>
+                        </div>
+                        <mobiscroll.Button type="submit">LogIn</mobiscroll.Button>
+                    </div>
+                </mobiscroll.Form>
+                {errors.map((err) => (
+                    <li style={{ color: "black" }} key={err}>
+                        {err}
+                    </li>
+                ))}
 
-        </div>
-    )
+            </div>
+        </div>)
 }
 
 export default Login

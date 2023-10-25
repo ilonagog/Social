@@ -71,8 +71,8 @@ function NavBar() {
                                 color: 'inherit',
                                 textDecoration: 'none',
                             }}
-                        >
-                            Social
+                        ><Link to="/">Social</Link>
+
                         </Typography>
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
@@ -120,7 +120,7 @@ function NavBar() {
                                         onClick={handleCloseNavMenu}
                                         sx={{ my: 2, color: 'white', display: 'block' }}
                                     >
-                                        <Link to="/messages">Messages</Link>
+                                        <Link to="/users">Friends</Link>
                                     </Button>
                                 </MenuItem>
                             </Menu>
@@ -161,7 +161,7 @@ function NavBar() {
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
-                                <Link to="/messages">Messages</Link>
+                                <Link to="/users">Friends</Link>
                             </Button>
                         </Box>
                         <Box sx={{ flexGrow: 0 }}>

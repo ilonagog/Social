@@ -3,12 +3,13 @@ import PostCard from './PostCard'
 import NewPost from './NewPost'
 import { Link } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
-const Posts = ({ posts, addPost, setPosts }) => {
+import { Button } from '@mobiscroll/react-lite'
+const Posts = ({ posts, addPost, setPosts, onUpdatePost }) => {
     const [viewForm, setViewForm] = useState(false)
     const { loggedIn } = useContext(UserContext)
     const postsList = posts.map(post => {
         return (
-            <PostCard key={post.id} post={post} author={post.user_name} addPost={addPost} posts={posts} setPosts={setPosts} />
+            <PostCard key={post.id} post={post} addPost={addPost} posts={posts} setPosts={setPosts} onUpdatePost={onUpdatePost} />
         )
     })
     const handleClick = (e) => {
@@ -18,7 +19,7 @@ const Posts = ({ posts, addPost, setPosts }) => {
 
         return (
             <div>
-                <Link to="/posts/new"><button onClick={handleClick}>Want to post?</button></Link>
+                <Link to="/posts/new"><Button onClick={handleClick}>Want to post?</Button></Link>
                 {viewForm ?
                     <NewPost addPost={addPost} />
                     :

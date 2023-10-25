@@ -4,23 +4,22 @@ import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/UserContext'
 import { MoreVert } from "@material-ui/icons";
 import { IconButton } from '@mui/material';
-// import IconButton from "@material-ui/core/IconButton";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import { Button } from '@mui/material'
+import { Button } from '@mobiscroll/react-lite'
 import EditComment from './EditComment';
+import EditPost from './EditPost';
 
 
-const PostCard = ({ post, posts, setPosts }) => {
+const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [viewComments, setViewComments] = useState(false)
     const [viewForm, setViewForm] = useState(false)
-    // console.log(post)
     const { title, image_url, id, comments, author } = post
+    console.log(author)
     const navigate = useNavigate()
-    // console.log(comments)
-    const { user, setUser, loggedIn, users } = useContext(UserContext)
-    // const isCurrentUserPost = user && user.name === author
+    const { user, setUser, loggedIn } = useContext(UserContext)
+
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -53,18 +52,20 @@ const PostCard = ({ post, posts, setPosts }) => {
         setPosts(updatedPosts)
         const userCommentList = updatedPost.comments.find((comment) => comment.user_id === user.id)
         if (!userCommentList) {
-            const newUserPosts = user.posts.filter((post) => post.id !== deletedComment.post_id)
-            setUser({ ...user, posts: newUserPosts })
+            const newUserPosts = user.uniq_p.filter((post) => post.id !== deletedComment.post_id)
+            setUser({ ...user, uniq_p: newUserPosts })
             navigate('/posts')
         }
 
     }
-    const onEditComment = () => {
+    const onEditComment = (editedComment) => {
+        const onPost = posts.find((post) => post.id === editedComment.post_id);
+        const updatedPostComments = onPost.comments.map((comment) => comment.id === editedComment.id ? editedComment : comment);
+        const updatedPost = { ...onPost, comments: updatedPostComments };
+        const updatedPosts = posts.map((post) => post.id === updatedPost.id ? updatedPost : post);
+        setPosts(updatedPosts)
+    }
 
-    }
-    const toggleViewComments = () => {
-        setViewComments(true)
-    }
     const commentsList = comments.map((comment) => {
         if (user) {
             const handleDeleteComment = (deletedComment) => {
@@ -76,11 +77,11 @@ const PostCard = ({ post, posts, setPosts }) => {
                     })
             }
             return (
-                <div key={comment.id}>
+                <div className='comments' key={comment.id}>
                     <span className="postUsername">
                         {comment.username}:
                     </span>
-                    <h3>Comments:  {comment.content}</h3>
+                    <p> {comment.content}</p>
                     {(user.id === comment.user_id) ? (
                         <div> <EditComment onEditComment={onEditComment} id={comment.id} comment={comment} />
                             <Button onClick={() => handleDeleteComment(comment)}>Delete Comment</Button>
@@ -90,38 +91,34 @@ const PostCard = ({ post, posts, setPosts }) => {
             )
         } else {
             return (
-                <div key={comment.id}>
+                <div className='comments' key={comment.id}>
                     <span className="postUsername">
                         {comment.username}:
                     </span>
-                    <h3>Comments:  {comment.content}</h3>
+                    <p>{comment.content}</p>
                 </div>
             )
         }
     })
-    const handleClickForm = (e) => {
-        setViewForm(true)
-    }
+
     if (loggedIn) {
         return (
             <div>
                 <div className="post">
                     <div className="postWrapper">
                         <div className="postTop">
-                            {(user.id === post.user_id) ?
-                                (<div className="postTopLeft">
-
-                                    <img
-                                        className="postProfileImg"
-                                        src={user.image_url}
-                                        alt=""
-                                    />
-                                    <span className="postUsername">
-                                        {user.name}
-                                    </span>
-                                    <span className="postDate">{post.date}</span>
-                                </div>)
-                                : null}
+                            <div className="postTopLeft">
+                                <img
+                                    className="postProfileImg"
+                                    src={post.avatar}
+                                    alt=""
+                                />
+                                <span className="postUsername">
+                                    {post.author}
+                                </span>
+                                <span className="postDate">{post.date}</span>
+                            </div>
+                            {/* } */}
                             <div className="postTopRight">
                                 <IconButton
                                     aria-label="more"
@@ -131,16 +128,77 @@ const PostCard = ({ post, posts, setPosts }) => {
                                 >
                                     <MoreVert />
                                 </IconButton>
-                                <Menu
-                                    anchorEl={anchorEl}
-                                    keepMounted onClose={handleClose}
-                                    open={open}>
-                                    <MenuItem
-                                        onClick={handleClose}>
-                                        <Button>Edit Post</Button>
-                                        <Button onClick={handleDeletePost}>Delete Post</Button>
-                                    </MenuItem>
-                                </Menu>
+                                {(user.id === post.user_id) ? (
+                                    <Menu
+                                        anchorEl={anchorEl}
+                                        keepMounted onClose={handleClose}
+                                        open={open}>
+                                        <MenuItem
+                                        >
+                                            <EditPost post={post} onUpdatePost={onUpdatePost} posts={posts} setPosts={setPosts} />
+                                            <Button onClick={handleDeletePost}>Delete Post</Button>
+                                        </MenuItem>
+                                    </Menu>
+                                ) : null}
+                            </div>
+                        </div>
+                        <div className="postCenter">
+                            <span className="postText">{title}</span>
+                            <img className="postImg" src={image_url} alt="" />
+                        </div>
+                        <hr />
+                        <div>
+                            <Button onClick={() => setViewComments(!viewComments)}>View all comments:</Button>
+                            {viewComments && (
+                                <div className="postBottom">
+                                    <div className="postBottomRight">
+                                        <ul>{commentsList}</ul>
+                                    </div>
+                                </div>
+                            )}
+                            {viewForm ? (
+                                <NewComment ppost={post} />)
+                                : (
+                                    <div className="bg-light p-2">
+                                        <div className="d-flex flex-row align-items-start">
+                                            <Link to={`/posts/${id}/comments`}>leave the comment
+                                            </Link>
+                                        </div>
+                                    </div>
+                                )
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div >
+        )
+    } else {
+        return (
+            <div>
+                <div className="post">
+                    <div className="postWrapper">
+                        <div className="postTop">
+                            <div className="postTopLeft">
+                                <img
+                                    className="postProfileImg"
+                                    src={post.avatar}
+                                    alt=""
+                                />
+                                <span className="postUsername">
+                                    {post.author}
+                                </span>
+                                <span className="postDate">{post.date}</span>
+                            </div>
+                            {/* } */}
+                            <div className="postTopRight">
+                                <IconButton
+                                    aria-label="more"
+                                    onClick={handleClick}
+                                    aria-haspopup="true"
+                                    aria-controls="long-menu"
+                                >
+                                    <MoreVert />
+                                </IconButton>
 
                             </div>
                         </div>
@@ -148,59 +206,22 @@ const PostCard = ({ post, posts, setPosts }) => {
                             <span className="postText">{title}</span>
                             <img className="postImg" src={image_url} alt="" />
                         </div>
-                        <div className="postBottom">
-                            <div className="postBottomRight">
-                                {viewComments ? <ul>{commentsList}</ul>
-                                    :
-                                    <Button onClick={toggleViewComments} className="postCommentText"> comments</Button>
-                                }
-                            </div>
+                        <hr />
+                        <div>
+                            <Button onClick={() => setViewComments(!viewComments)}>View all comments:</Button>
+                            {viewComments && (
+                                <div className="postBottom">
+                                    <div className="postBottomRight">
+                                        <ul>{commentsList}</ul>
+                                    </div>
+                                </div>
+                            )}
+
+                            <Link className="underline" to="/login">Login and leave your comment</Link>
                         </div>
-                        {viewForm ?
-                            <NewComment />
-                            :
-                            <Link to={`/posts/${id}/comments`}><Button onClick={handleClickForm} >New Comment</Button></Link>
-                        }
                     </div>
                 </div>
             </div >
-
-        )
-
-    } else {
-        return (
-            <div className="post">
-                <div className="postWrapper">
-                    <div className="postTop">
-                        <div className="postTopLeft">
-                            <img
-                                className="postProfileImg"
-                                src={user.image_url}
-                                alt=""
-                            />
-                            <span className="postUsername">
-                                {author}
-                            </span>
-                            <span className="postDate">{post.date}</span>
-                        </div>
-                        <div className="postTopRight">
-                            <MoreVert />
-                        </div>
-                    </div>
-                    <div className="postCenter">
-                        <span className="postText">{title}</span>
-                        <img className="postImg" src={image_url} alt="" />
-                        <div className="postBottom">
-                            <div className="postBottomRight">
-                                <span className="postCommentText">   {commentsList} comments</span>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-            </div >
-
-
         )
     }
 }

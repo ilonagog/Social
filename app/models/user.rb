@@ -2,13 +2,17 @@ class User < ApplicationRecord
     has_many :comments
     has_many :posts, through: :comments
     has_one_attached :avatar
-    # validates :username, uniqueness: true, presence: true
-    # validates :email, presence: true
-    # validates :password, presence: true
-    # validates :name, presence: true
-    # # validates :avatar, presence: true
-    # validates :bio, presence: true
+    validates :username, uniqueness: true, presence: true
+    validates :email, presence: true
+    validates :password, presence: true
+    validates :name, presence: true
+    # validates :avatar, presence: true
+    validates :bio, presence: true
+    
+    has_many :messages, foreign_key: :sender_id
+    has_many :messages, foreign_key: :receiver_id
 
+   
     has_secure_password
 
     # PASSWORD_REQUIREMENTS = /\A
@@ -19,7 +23,7 @@ class User < ApplicationRecord
     #     (?=.*[[:^alnum:]]) #contains at least one symbol
     # /x
     # validates :password, format: {with: PASSWORD_REQUIREMENTS}
-    # validates :email, presence: true, format: { 
-    #     with: /\A[\w+\-.]+@[\w\-.]+\.com\z/i, message: "is not a valid email address" 
-    # }
+    validates :email, presence: true, format: { 
+        with: /\A[\w+\-.]+@[\w\-.]+\.com\z/i, message: "is not a valid email address" 
+    }
 end

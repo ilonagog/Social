@@ -10,26 +10,19 @@ class PostsController < ApplicationController
         post= Post.find(params[:id])
         render json: post
     end
-    # def create
-    #     @post = Post.new(post_params)
-    
-    #     if @post.save
-    #       render json: @post, status: :created
-    #     else
-    #       render json: { errors: @post.errors.full_messages }, status: :unprocessable_entity
-    #     end
-    #   end
-    
-    #   private
-    
-    #   def post_params
-    #     params.require(:post).permit(:title, :image)
-    #   end
-
     def create 
         # user = User.find(params[:id])
         post = Post.create!(create_post_params)
         render json: post, status: :created
+    end
+
+    def update
+        # user= User.find_by(id: session[:user_id])
+        post = Post.find(params[:id])
+    #    posts.find(update_post_params)
+
+        post.update!(update_post_params)
+        render json: post
     end
 
     def destroy
@@ -38,11 +31,13 @@ class PostsController < ApplicationController
         head :no_content
     end
 
-
-    
     private
     def create_post_params
         params.permit(:title, :image).merge(user_id: session[:user_id])
+    end
+
+    def update_post_params
+        params.permit(:title)
     end
     def render_unprocessable_entity_response(exception)
         render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity
