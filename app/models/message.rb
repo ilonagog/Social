@@ -9,3 +9,12 @@ class Message < ApplicationRecord
     belongs_to :receiver, class_name: "User", foreign_key: "receiver_id"
 end
   
+#  def self.messages
+#     self.all.map do |message|
+#         {
+#             id: message.id,
+#             content: message.content,
+#             user: message.user.name
+#         }
+#     end
+#  end

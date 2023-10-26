@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button } from '@mobiscroll/react-lite';
-
+import mobiscroll from '@mobiscroll/react-lite';
+import "@mobiscroll/react-lite/dist/css/mobiscroll.min.css";
 const EditComment = ({ comment, onEditComment }) => {
     const [viewForm, setViewForm] = useState(false);
     const [input, setInput] = useState({ content: comment.content });
@@ -44,11 +45,23 @@ const EditComment = ({ comment, onEditComment }) => {
         <div>
             {viewForm ? (
                 <div>
-                    <form onSubmit={handleSubmit}>
-                        <label>Content</label>
-                        <input name="content" value={input.content} onChange={handleChange} />
-                        <input type="submit" value="Submit" />
-                    </form>
+                    <mobiscroll.Form theme="mobiscroll" onSubmit={handleSubmit}>
+                        <div className="mbsc-row">
+                            <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
+                                <mobiscroll.Input
+                                    inputStyle="box"
+                                    labelStyle="floating"
+                                    placeholder="Please be kind when comment"
+                                    name="content"
+                                    value={input.content}
+                                    onChange={handleChange}
+                                >
+                                    Content:
+                                </mobiscroll.Input>
+                            </div>
+                        </div>
+                        <mobiscroll.Button type="submit">Submit</mobiscroll.Button>
+                    </mobiscroll.Form>
                     {errors.map((err, index) => (
                         <li style={{ color: "black" }} key={index}>
                             {err}
