@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
     end
 
     def create 
+        # byebug
         user= find_user_by_session_id
         message = user.messages.create!(message_params)
         render json:  message, status: :created
@@ -21,13 +22,13 @@ class MessagesController < ApplicationController
 
     private
     def message_params
-        params.permit(:content, :receiver_id)
-      end
-    
-      def find_user_by_session_id
+        params.permit(:content, :sender_id, :receiver_id)
+    end
+      
+    def find_user_by_session_id
         user = User.find_by(id: session[:user_id])
-      end
-      def render_unprocessable_entity_response(exception)
+    end
+    def render_unprocessable_entity_response(exception)
         render json: { errors: exception.record.errors.full_messages }, status: :unprocessable_entity
     end
 

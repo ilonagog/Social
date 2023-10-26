@@ -33,7 +33,8 @@ class UsersController < ApplicationController
     end
 
   
-    def user_messages # should see messages for a specific user
+    def user_messages
+         # should see messages for a specific user
         user = User.find(params[:id])
         # byebug
         messages = user.messages 

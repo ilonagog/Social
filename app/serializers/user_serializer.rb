@@ -10,5 +10,12 @@ class UserSerializer < ActiveModel::Serializer
    def uniq_p
     object.posts.uniq
    end
+  #  def send_messages
+  #   object.messages.where(sender_id: object.id)
+  #  end
+
+  #  def received_messages
+  #   object.messages.where(receiver_id: object.id)
+  # end
 
 end

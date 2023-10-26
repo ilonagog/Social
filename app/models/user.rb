@@ -11,7 +11,8 @@ class User < ApplicationRecord
     
     has_many :messages, foreign_key: :sender_id
     has_many :messages, foreign_key: :receiver_id
-
+ 
+    
    
     has_secure_password
 

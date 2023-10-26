@@ -25,28 +25,13 @@ const Messages = ({ selectedUser }) => {
     }
 
     let messageList = null;
-    // const generateSenderLinks = (senderId) => {
-    //     return (
-    //         <Link to={`/senders/${senderId}`} key={senderId}>
-    //             Sender {senderId}
-    //         </Link>
-    //     );
-    // };
 
-    // const generateReceiverLinks = (receiverId) => {
-    //     return (
-    //         <Link to={`/receivers/${receiverId}`} key={receiverId}>
-    //             Receiver {receiverId}
-    //         </Link>
-    //     );
-    // };
     if (Array.isArray(filteredMessages) && filteredMessages.length > 0) {
         messageList = filteredMessages.map((message) => (
             <Message
                 key={message.id}
                 message={message}
-            // senderLinks={generateSenderLinks(message.sender_id)}
-            // receiverLinks={generateReceiverLinks(message.receiver_id)}
+
             />
         ));
     } else {
@@ -62,7 +47,7 @@ const Messages = ({ selectedUser }) => {
             <h3>Messages:</h3>
             <ul>{messageList}</ul>
 
-            {loggedIn ? <NewMessage /> : null}
+            {loggedIn ? <NewMessage selectedUser={selectedUser} /> : null}
         </div>
     );
 };
