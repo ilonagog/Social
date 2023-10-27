@@ -51,7 +51,7 @@ const EditComment = ({ comment, onEditComment }) => {
                                 <mobiscroll.Input
                                     inputStyle="box"
                                     labelStyle="floating"
-                                    placeholder="Please be kind when comment"
+                                    placeholder="Change your comment"
                                     name="content"
                                     value={input.content}
                                     onChange={handleChange}

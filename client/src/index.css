@@ -12,6 +12,81 @@ code {
     monospace;
 }
 
+.ul {
+  color: black;
+}
+
+.social-icon {
+  display: flex;
+  position: relative;
+  overflow: hidden;
+  width: var(--link-size);
+  height: var(--link-size);
+  margin: 8px;
+  border-color: #001a27;
+  border-radius: 50%;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  transition: var(--trans-property);
+}
+
+.social-icon i {
+  margin: auto;
+  font-size: 24px;
+  color: #67798e;
+  z-index: 1;
+  transition: var(--trans-property);
+}
+
+.social-icon:after {
+  content: "";
+  width: var(--link-size);
+  height: var(--link-size);
+  position: absolute;
+  transform: translate(0, var(--link-size));
+  border-radius: 50%;
+  transition: var(--trans-property);
+}
+
+.social-icon.twitter:after {
+  background-color: #1da1f2;
+}
+
+.social-icon.github:after {
+  background-color: #24292e;
+}
+
+.social-icon.dribbble:after {
+  background-color: #ea4c89;
+}
+
+.social-icon.instagram:after {
+  background-color: #5851db;
+}
+
+.social-icon.facebook:after {
+  background-color: #1769ff;
+}
+
+/*** Animations ***/
+.social-icon:hover {
+  transform: translateY(-4px);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.16);
+}
+
+.social-icon:hover i {
+  color: rgb(17, 16, 16);
+}
+
+.social-icon:hover:after {
+  transform: translate(0) scale(1.2);
+}
+
+a {
+  text-decoration: none;
+  color: black
+}
+
 .home {
 
   /* width: 100%;
@@ -354,11 +429,12 @@ body {
 }
 
 .m-b-25 {
+  background: none;
   margin-bottom: 25px;
 }
 
 .img-radius {
-  border-radius: 5px;
+  border-radius: 50%;
 }
 
 
@@ -402,7 +478,7 @@ h6 {
 }
 
 .text-muted {
-  color: #919aa3 !important;
+  color: #070b0f !important;
 }
 
 .b-b-default {
@@ -473,6 +549,7 @@ h6 {
   justify-content: center;
 }
 
+/* 
 .social-icon {
   display: flex;
   position: relative;
@@ -526,7 +603,7 @@ h6 {
 }
 
 /*** Animations ***/
-.social-icon:hover {
+/* .social-icon:hover {
   transform: translateY(-4px);
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.16);
 }
@@ -542,13 +619,15 @@ h6 {
 a {
   text-decoration: none;
   color: black
-}
+} */
 
 .css-r6ewbb-MuiToolbar-root {
+  color: black;
   font-family: 'Times New Roman', Times, serif;
 }
 
 a:-webkit-any-link {
+  color: black;
   font-family: 'Times New Roman', Times, serif;
 }
 
@@ -829,4 +908,25 @@ body {
   display: inherit;
   margin-left: 140px;
   width: fit-content;
+}
+
+.fa.fa-youtube-play:before {
+  color: red;
+}
+
+.fa-github:before {
+  color: black;
+}
+
+.container {
+  display: inline-flex;
+}
+
+
+.css-i4bv87-MuiSvgIcon-root {
+  color: black;
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+  color: black;
 }

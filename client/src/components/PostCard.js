@@ -103,7 +103,7 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
 
     if (loggedIn) {
         return (
-            <div>
+            <div className='container'>
                 <div className="post">
                     <div className="postWrapper">
                         <div className="postTop">

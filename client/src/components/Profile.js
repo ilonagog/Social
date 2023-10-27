@@ -39,29 +39,20 @@ const Profile = () => {
                                                 </div>
                                             </div>
                                             <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
-                                            <a className="social-icon github" href="https://www.youtube.com/watch?v=0AmITped1KY">
-                                                <i className="fab fa-github"></i>
-                                            </a>
+
                                             <div className="row">
                                             </div>
-                                            <ul className="social-link list-unstyled m-t-40 m-b-10">
+                                            <div className='social-icons'>
 
-                                                <a className="social-icon twitter" href="https://www.youtube.com/watch?v=0AmITped1KY">
-                                                    <i className="fab fa-twitter"></i>
-                                                </a>
-                                                <a className="social-icon dribbble" href="https://www.youtube.com/watch?v=0AmITped1KY">
-                                                    <i className="fab fa-dribbble"></i>
-                                                </a>
-                                                <a className="social-icon facebook" href="https://www.youtube.com/watch?v=0AmITped1KY">
-                                                    <i className="fab fa-facebook-f"></i>
-                                                </a>
-                                                <a className="social-icon instagram" href="https://www.youtube.com/watch?v=0AmITped1KY">
-                                                    <i className="fab fa-instagram"></i>
-                                                </a>
-                                                <a className="social-icon github" href="https://www.youtube.com/watch?v=0AmITped1KY">
-                                                    <i className="fab fa-github"></i>
-                                                </a>
-                                            </ul>
+                                                <ul className="social-link list-unstyled m-t-40 m-b-10">
+                                                    <a className="social-icon dribbble" href="https://www.youtube.com/watch?v=0AmITped1KY">
+                                                        <i className="fa fa-youtube-play"></i>
+                                                    </a>
+                                                    <a className="social-icon github" href="https://www.youtube.com/watch?v=0AmITped1KY">
+                                                        <i className="fab fa-github"></i>
+                                                    </a>
+                                                </ul>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
