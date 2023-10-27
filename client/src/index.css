@@ -930,3 +930,13 @@ body {
 .css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
   color: black;
 }
+
+
+.MuiMenu-list {
+  display: flex;
+  outline: 0;
+  flex-wrap: wrap;
+  flex-direction: column-reverse;
+  align-content: flex-end;
+  justify-content: center;
+}

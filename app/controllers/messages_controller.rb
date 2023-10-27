@@ -15,8 +15,8 @@ class MessagesController < ApplicationController
 
     def create 
         # byebug
-        user= find_user_by_session_id
-        message = user.messages.create!(message_params)
+        # user= find_user_by_session_id
+        message = Message.create!(message_params)
         render json:  message, status: :created
     end 
 

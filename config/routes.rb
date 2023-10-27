@@ -8,10 +8,10 @@ Rails.application.routes.draw do
   resources :posts  do
     resources :comments, only: [:create]
   end
-  resources :users, only: [:index, :update] do
-    resources :messages, only: [:create]
-   
-  end
+
+  resources :users, only: [:index, :update] 
+    # resources :messages, only: [:create]
+  # end
   
   get '/users/:id/messages', to: 'users#user_messages' 
   

@@ -1,5 +1,5 @@
 
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import NewMessage from './NewMessage';
@@ -8,7 +8,7 @@ import { Button } from '@mobiscroll/react-lite';
 import { Link } from 'react-router-dom';
 
 const Messages = ({ selectedUser }) => {
-    const { loggedIn, messages, setMessages } = useContext(UserContext);
+    const { addMessages, loggedIn, messages, setMessages } = useContext(UserContext);
     const { id } = useParams();
 
     useEffect(() => {
@@ -24,7 +24,7 @@ const Messages = ({ selectedUser }) => {
         );
     }
 
-    let messageList = null;
+    let messageList = [];
 
     if (Array.isArray(filteredMessages) && filteredMessages.length > 0) {
         messageList = filteredMessages.map((message) => (
@@ -47,7 +47,7 @@ const Messages = ({ selectedUser }) => {
             <h3>Messages:</h3>
             <ul>{messageList}</ul>
 
-            {loggedIn ? <NewMessage selectedUser={selectedUser} /> : null}
+            {loggedIn ? <NewMessage addMessages={addMessages} selectedUser={selectedUser} /> : null}
         </div>
     );
 };
