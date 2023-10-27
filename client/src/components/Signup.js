@@ -111,7 +111,7 @@ const Signup = () => {
                             placeholder="Enter your name"
                             name="name"
                             value={name}
-                            onChange={(e) => setUsername(e.target.value)}
+                            onChange={(e) => setName(e.target.value)}
                         >
                             Name
                         </mobiscroll.Input>

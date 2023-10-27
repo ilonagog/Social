@@ -25,9 +25,9 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
         setAnchorEl(event.currentTarget);
     };
 
-    // const handleViewComments = (e) => {
-    //     setViewComments(true)
-    // }
+    const handleViewForm = () => {
+        setViewForm(true);
+    };
     const open = Boolean(anchorEl);
 
     const handleClose = () => {
@@ -161,7 +161,8 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                                 : (
                                     <div className="bg-light p-2">
                                         <div className="d-flex flex-row align-items-start">
-                                            <Link to={`/posts/${id}/comments`}>leave the comment
+                                            <Link to={`/posts/${id}/comments`} onClick={handleViewForm}>
+                                                leave the comment
                                             </Link>
                                         </div>
                                     </div>
