@@ -1,8 +1,10 @@
+// import React, { useState, useContext } from 'react';
 import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
-
-const NewMessage = ({ selectedUser, addMessages }) => {
-    const { user, messages } = useContext(UserContext);
+import mobiscroll from '@mobiscroll/react-lite';
+import "@mobiscroll/react-lite/dist/css/mobiscroll.min.css";
+const NewMessage = ({ selectedUser }) => {
+    const { user, addMessages } = useContext(UserContext);
 
     const [content, setContent] = useState("");
     const [receiverId, setReceiverId] = useState(0);
@@ -25,7 +27,7 @@ const NewMessage = ({ selectedUser, addMessages }) => {
             .then((response) => {
                 if (response.ok) {
                     response.json().then((data) => {
-                        addMessages([...messages, data])
+                        addMessages(data)
                         setContent('');
 
                     }
@@ -46,22 +48,54 @@ const NewMessage = ({ selectedUser, addMessages }) => {
 
     return (
         <div>
-            <form onSubmit={handleSubmit}>
-                <label>Content</label>
-                <input name="content" value={content} onChange={(e) => setContent(e.target.value)} />
-                <label>Sender</label>
-                <input name="sender_id" value={user.id} disabled />
-                <label>Receiver</label>
-                <input name="receiver_id" value={receiverId} onChange={(e) => setReceiverId(e.target.value)} />
-                <input type="submit" />
-            </form>
+            <mobiscroll.Form theme="mobiscroll" onSubmit={handleSubmit}>
+                <div className="mbsc-row">
+                    <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
+                        <mobiscroll.Input
+                            inputStyle="box"
+                            labelStyle="floating"
+                            placeholder="Please be kind when messaging"
+                            name="content"
+                            value={content}
+                            onChange={(e) => setContent(e.target.value)}
+                        >
+                            Content:
+                        </mobiscroll.Input>
+                    </div>
+                    <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
+                        <mobiscroll.Input
+                            inputStyle="box"
+                            labelStyle="floating"
+                            placeholder="Please be kind when messaging"
+                            name="sender_id"
+                            value={user.id}
+                            disabled
+                        >
+                            Sender:
+                        </mobiscroll.Input>
+                    </div>
+                    <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
+                        <mobiscroll.Input
+                            inputStyle="box"
+                            labelStyle="floating"
+                            placeholder="Please be kind when messaging"
+                            name="receiver_id"
+                            value={receiverId}
+                            onChange={(e) => setReceiverId(e.target.value)}
+                        >
+                            Receiver:
+                        </mobiscroll.Input>
+                    </div>
+                </div>
+                <mobiscroll.Button type="submit">Submit</mobiscroll.Button>
+            </mobiscroll.Form>
+
             {errors}
         </div>
     );
 };
 
 export default NewMessage;
-// import React, { useState, useContext } from 'react';
 // import { UserContext } from '../context/UserContext';
 
 // const NewMessage = ({ selectedUser }) => {

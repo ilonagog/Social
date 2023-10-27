@@ -1,4 +1,4 @@
-
+// Messages.js
 import React, { useContext, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
@@ -8,7 +8,7 @@ import { Button } from '@mobiscroll/react-lite';
 import { Link } from 'react-router-dom';
 
 const Messages = ({ selectedUser }) => {
-    const { addMessages, loggedIn, messages, setMessages } = useContext(UserContext);
+    const { loggedIn, messages, setMessages } = useContext(UserContext);
     const { id } = useParams();
 
     useEffect(() => {
@@ -17,42 +17,79 @@ const Messages = ({ selectedUser }) => {
             .then((data) => setMessages(data));
     }, [id, setMessages]);
 
-    let filteredMessages = messages;
-    if (selectedUser && selectedUser.id) {
-        filteredMessages = messages.filter(
-            (message) => message.sender_id === selectedUser.id || message.receiver_id === selectedUser.id
-        );
-    }
-
-    let messageList = [];
-
-    if (Array.isArray(filteredMessages) && filteredMessages.length > 0) {
-        messageList = filteredMessages.map((message) => (
-            <Message
-                key={message.id}
-                message={message}
-
-            />
-        ));
-    } else {
-        messageList = <p>No Messages to display</p>;
-    }
-
-
     return (
         <div>
             <Button>
                 <Link to="/users">See your friends</Link>
             </Button>
             <h3>Messages:</h3>
-            <ul>{messageList}</ul>
-
-            {loggedIn ? <NewMessage addMessages={addMessages} selectedUser={selectedUser} /> : null}
+            <ul>
+                {messages.map((message) => (
+                    <Message key={message.id} message={message} />
+                ))}
+            </ul>
+            {loggedIn ? <NewMessage selectedUser={selectedUser} /> : null}
         </div>
     );
 };
 
 export default Messages;
+
+// import React, { useContext, useEffect } from 'react';
+// import { useParams } from 'react-router-dom';
+// import { UserContext } from '../context/UserContext';
+// import NewMessage from './NewMessage';
+// import Message from './Message';
+// import { Button } from '@mobiscroll/react-lite';
+// import { Link } from 'react-router-dom';
+
+// const Messages = ({ selectedUser }) => {
+
+//     const { loggedIn, messages, setMessages } = useContext(UserContext);
+//     const { id } = useParams();
+
+//     useEffect(() => {
+//         fetch(`/users/${id}/messages`)
+//             .then((response) => response.json())
+//             .then((data) => setMessages(data));
+//     }, [id, setMessages]);
+
+//     let filteredMessages = messages;
+//     if (selectedUser && selectedUser.id) {
+//         filteredMessages = messages.filter(
+//             (message) => message.sender_id === selectedUser.id || message.receiver_id === selectedUser.id
+//         );
+//     }
+
+//     let messageList = [];
+
+//     if (Array.isArray(filteredMessages) && filteredMessages.length > 0) {
+//         messageList = filteredMessages.map((message) => (
+//             <Message
+//                 key={message.id}
+//                 message={message}
+
+//             />
+//         ));
+//     } else {
+//         messageList = <p>No Messages to display</p>;
+//     }
+
+
+//     return (
+//         <div>
+//             <Button>
+//                 <Link to="/users">See your friends</Link>
+//             </Button>
+//             <h3>Messages:</h3>
+//             <ul>{messageList}</ul>
+
+//             {loggedIn ? <NewMessage addMessages={addMessages} selectedUser={selectedUser} /> : null}
+//         </div>
+//     );
+// };
+
+// export default Messages;
 
 
 
