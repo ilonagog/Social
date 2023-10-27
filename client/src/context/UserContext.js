@@ -72,7 +72,7 @@ const UserProvider = ({ children }) => {
         setSelectedUser(user);
     };
     console.log(selectedUser)
-    console.log(handleSelectUser)
+    // console.log(handleSelectUser)
 
     return (
         <UserContext.Provider value={{

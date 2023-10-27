@@ -8,6 +8,7 @@ const NewMessage = ({ selectedUser }) => {
 
     const [content, setContent] = useState("");
     const [receiverId, setReceiverId] = useState(0);
+
     const [errors, setErrors] = useState([]);
 
     const handleSubmit = (e) => {
@@ -27,6 +28,7 @@ const NewMessage = ({ selectedUser }) => {
             .then((response) => {
                 if (response.ok) {
                     response.json().then((data) => {
+                        console.log(data)
                         addMessages(data)
                         setContent('');
 
@@ -66,7 +68,7 @@ const NewMessage = ({ selectedUser }) => {
                         <mobiscroll.Input
                             inputStyle="box"
                             labelStyle="floating"
-                            placeholder="Please be kind when messaging"
+
                             name="sender_id"
                             value={user.id}
                             disabled
@@ -78,7 +80,7 @@ const NewMessage = ({ selectedUser }) => {
                         <mobiscroll.Input
                             inputStyle="box"
                             labelStyle="floating"
-                            placeholder="Please be kind when messaging"
+
                             name="receiver_id"
                             value={receiverId}
                             onChange={(e) => setReceiverId(e.target.value)}
@@ -107,7 +109,7 @@ export default NewMessage;
 //     const handleSubmit = (e) => {
 //         e.preventDefault();
 //         if (!selectedUser || !selectedUser.id) {
-//             console.error('Selected user is undefined or has no ID.');
+//             console.error('Selected user');
 //             return;
 //         }
 //         const newMessage = {

@@ -13,7 +13,7 @@ import NewComment from './components/NewComment';
 import Profile from './components/Profile';
 import Messages from './components/Messages';
 import EditUser from './components/EditUser';
-import ProfileInfo from './components/ProfileInfo';
+// import ProfileInfo from './components/ProfileInfo';
 import Friends from './components/Friends';
 
 
@@ -68,7 +68,7 @@ function App() {
         <Route path="/users/:id/messages" element={<Messages />} />
 
         <Route path="/edit_profile" element={<EditUser />} />
-        <Route path="/user_info" element={<ProfileInfo />} />
+        {/* <Route path="/user_info" element={<ProfileInfo />} /> */}
       </Routes>
 
     </div>
