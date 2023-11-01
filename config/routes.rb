@@ -9,7 +9,10 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  resources :users, only: [:index, :update] 
+  resources :users, only: [:index,:show, :update] 
+    # member do
+    #   get "messages", to: "users#messages"
+    # end
     # resources :messages, only: [:create]
   # end
   
@@ -17,12 +20,12 @@ Rails.application.routes.draw do
   
 
   get "/chat", to: "messages#chat"
-  # get "users/:id/messages", to: "users#"
   get "/me", to: "users#show"
   post "/signup", to: "users#create"
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
-
+  
+  # get "users/:id/messages", to: "users#"
   # Routing logic: fallback requests for React Router.
   # Leave this here to help deploy your app later!
   get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }

@@ -1,5 +1,8 @@
 
 import './App.css';
+import { UserProvider } from './context/UserContext'
+
+import { UsersProvider } from './context/UsersContext';
 import React, { useState, useEffect } from "react"
 import { Routes, Route } from 'react-router-dom';
 import NavBar from './components/NavBar';
@@ -24,7 +27,7 @@ function App() {
     fetch("/posts")
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        // console.log(data)
         setPosts(data)
       })
   }, [])
@@ -48,30 +51,49 @@ function App() {
 
     setPosts(updatedPosts);
   };
-  console.log(updatePosts)
+  // console.log(updatePosts)
+
+
+
+
+
+  //     return (
+  //         <UserProvider>
+  //             <UsersProvider user={user}>
+  //                 {/* Your other components and providers */}
+  //             </UsersProvider>
+  //         </UserProvider>
+  //     );
+  // };
+
 
 
 
   return (
     <div>
-      <NavBar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/posts" element={<Posts posts={posts} setPosts={setPosts} addPost={addPost} onUpdatePost={updatePosts} />} />
-        <Route path="/posts/new" element={<NewPost addPost={addPost} posts={posts} setPosts={setPosts} />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/comments" element={<Comments />} />
-        <Route path="/posts/:id/comments" element={<NewComment posts={posts} setPosts={setPosts} />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/users" element={<Friends />} />
-        <Route path="/users/:id/messages" element={<Messages />} />
+      <UserProvider>
+        <UsersProvider >
 
-        <Route path="/edit_profile" element={<EditUser />} />
-        {/* <Route path="/user_info" element={<ProfileInfo />} /> */}
-      </Routes>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/posts" element={<Posts posts={posts} setPosts={setPosts} addPost={addPost} onUpdatePost={updatePosts} />} />
+            <Route path="/posts/new" element={<NewPost addPost={addPost} posts={posts} setPosts={setPosts} />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/comments" element={<Comments />} />
+            <Route path="/posts/:id/comments" element={<NewComment posts={posts} setPosts={setPosts} />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/users" element={<Friends />} />
+            <Route path="/users/:id/messages" element={<Messages />} />
 
-    </div>
+            <Route path="/edit_profile" element={<EditUser />} />
+            {/* <Route path="/user_info" element={<ProfileInfo />} /> */}
+          </Routes>
+        </UsersProvider>
+
+      </UserProvider>
+    </div >
   );
 }
 

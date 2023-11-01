@@ -21,6 +21,7 @@ import App from './App';
 import { BrowserRouter } from 'react-router-dom'
 import { UserProvider } from './context/UserContext'
 import './index.css';
+import { UsersProvider } from './context/UsersContext';
 
 
 
@@ -28,7 +29,10 @@ ReactDOM.render(
 
   <BrowserRouter>
     <UserProvider>
-      <App />
+      <UsersProvider>
+
+        <App />
+      </UsersProvider>
     </UserProvider>
   </BrowserRouter>,
   document.getElementById('root')

@@ -12,6 +12,11 @@ code {
     monospace;
 }
 
+.css-19r6kue-MuiContainer-root {
+
+  background-color: #acb1b7;
+}
+
 .ul {
   color: black;
 }
@@ -88,7 +93,7 @@ a {
 }
 
 .home {
-
+  width: 100%;
   /* width: 100%;
   height: 100%; */
 }
@@ -188,6 +193,7 @@ a {
 }
 
 .postUsername {
+  font-family: 'Times New Roman', Times, serif;
   font-size: 15px;
   font-weight: 500;
   margin: 0 10px;
@@ -417,7 +423,7 @@ body {
 
 .bg-c-lite-green {
   background: -webkit-gradient(linear, left top, right top, from(#f29263), to(#ee5a6f));
-  background: linear-gradient(to right, #ee5a6f, #f29263);
+  background: linear-gradient(to right, #046211, #aae7ae);
 }
 
 .user-profile {
@@ -438,6 +444,9 @@ body {
 }
 
 
+p {
+  font-family: 'Times New Roman', Times, serif;
+}
 
 h6 {
   font-size: 14px;
@@ -449,6 +458,7 @@ h6 {
 
 @media only screen and (min-width: 1400px) {
   p {
+    font-family: 'Times New Roman', Times, serif;
     font-size: 14px;
   }
 }
@@ -521,14 +531,19 @@ h6 {
 }
 
 .mbsc-mobiscroll.mbsc-btn {
+  color: black;
   font-family: 'Times New Roman', Times, serif;
-  font-variant: petite-caps;
-  background-color: #919aa3;
+  /* font-variant: petite-caps; */
+  background-color: none;
+  background: none;
   display: inherit;
   margin-left: 140px;
   width: fit-content;
   font-variant: normal;
+  text-transform: none;
 }
+
+.mbsc-mobiscroll.mbsc-btn {}
 
 .mbsc-mobiscroll.mbsc-form {
   background: none;
@@ -537,7 +552,7 @@ h6 {
 
 .mbsc-mobiscroll.mbsc-input input {
   background: none;
-  background-color: rgb(189 208 241);
+  background-color: rgb(1, 5, 12);
   border: solid;
 }
 
@@ -886,19 +901,21 @@ body {
 }
 
 .mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3 {
-  width: 40%;
+  width: 800px;
   background: none;
 }
 
 .mbsc-mobiscroll.mbsc-form {
   background: none;
-  display: flex;
+  width: 800px;
+  display: flow;
 }
 
 .mbsc-mobiscroll.mbsc-input input {
   background: none;
   background-color: rgb(189 208 241);
   border: solid;
+  width: 800px;
 }
 
 .mbsc-mobiscroll.mbsc-btn {
@@ -939,4 +956,23 @@ body {
   flex-direction: column-reverse;
   align-content: flex-end;
   justify-content: center;
+}
+
+.friends {
+  display: grid;
+  justify-content: center;
+}
+
+h2 {
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.messages {
+
+  padding-block: 20px;
+  display: block;
+  background-color: #85c3e2;
+  width: 800px;
+  border: none;
+  border-radius: 15px;
 }

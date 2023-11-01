@@ -31,7 +31,7 @@ const Profile = () => {
                                     </div>
                                     <div className="col-sm-8">
                                         <div className="card-block">
-                                            <h6 className="m-b-20 p-b-5 b-b-default f-w-600">Information</h6>
+                                            <h6 className="m-b-20 p-b-5 b-b-default f-w-600">Information :</h6>
                                             <div className="row">
                                                 <div className="col-sm-6">
                                                     <p className="m-b-10 f-w-600">Email</p>
