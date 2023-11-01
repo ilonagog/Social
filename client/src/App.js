@@ -18,6 +18,8 @@ import Messages from './components/Messages';
 import EditUser from './components/EditUser';
 // import ProfileInfo from './components/ProfileInfo';
 import Friends from './components/Friends';
+import CommentCard from './components/CommentCard';
+import ProfileInfo from './components/ProfileInfo';
 
 
 function App() {
@@ -27,8 +29,14 @@ function App() {
     fetch("/posts")
       .then(response => response.json())
       .then(data => {
+        const postsDate = data.map(post => {
+          return {
+            ...post,
+            createdAt: new Date(post.created_at).toLocaleString()
+          }
+        })
         // console.log(data)
-        setPosts(data)
+        setPosts(postsDate)
       })
   }, [])
 
@@ -51,20 +59,6 @@ function App() {
 
     setPosts(updatedPosts);
   };
-  // console.log(updatePosts)
-
-
-
-
-
-  //     return (
-  //         <UserProvider>
-  //             <UsersProvider user={user}>
-  //                 {/* Your other components and providers */}
-  //             </UsersProvider>
-  //         </UserProvider>
-  //     );
-  // };
 
 
 
@@ -82,6 +76,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/comments" element={<Comments />} />
+            <Route path="/users/:id" element={<ProfileInfo />} />
             <Route path="/posts/:id/comments" element={<NewComment posts={posts} setPosts={setPosts} />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/users" element={<Friends />} />

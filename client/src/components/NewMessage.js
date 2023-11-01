@@ -65,7 +65,7 @@ const NewMessage = ({ selectedUser }) => {
                             value={content}
                             onChange={(e) => setContent(e.target.value)}
                         >
-                            Content:
+                            Message:
                         </mobiscroll.Input>
                     </div>
                     {/* <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">

@@ -959,7 +959,7 @@ body {
 }
 
 .friends {
-  display: grid;
+  display: flex;
   justify-content: center;
 }
 
@@ -975,4 +975,59 @@ h2 {
   width: 800px;
   border: none;
   border-radius: 15px;
+}
+
+.search {
+  display: inline-flex;
+  width: 200px;
+}
+
+.userEdit {
+  display: flow;
+}
+
+.date {
+  display: inline;
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.commentContainer {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.commentDate {
+  font-size: 12px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.commentContent {
+  font-size: 14px;
+  color: #333;
+  margin-top: 10px;
+}
+
+.profile-info {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin: 20px;
+  width: 400px;
+}
+
+.profile-username {
+  font-weight: bold;
+}
+
+.profile-email,
+.profile-name,
+.profile-bio {
+  margin-top: 10px;
+}
+
+.profile-image {
+  margin-top: 10px;
+  width: inherit;
 }

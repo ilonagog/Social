@@ -1,16 +1,15 @@
-// import React, { useContext } from 'react'
-// import { UserContext } from '../context/UserContext'
+import React from 'react';
 
-// const CommentCard = ({ comment }) => {
-//     console.log(comment)
-//     const { user } = useContext(UserContext)
-//     console.log(user)
+const CommentCard = ({ comment }) => {
+    const { username, createdAt, content } = comment;
 
-//     return (
-//         <div>
-//             <h3>hi</h3>
-//         </div>
-//     )
-// }
+    return (
+        <div className='comment'>
+            <span className='commentUsername'>{username}</span>
+            <span className='commentDate'>{createdAt}</span>
+            <p>{content}</p>
+        </div>
+    );
+};
 
-// export default CommentCard
+export default CommentCard;

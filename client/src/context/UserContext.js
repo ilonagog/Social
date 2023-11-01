@@ -41,8 +41,14 @@ const UserProvider = ({ children }) => {
         fetch("/messages")
             .then(response => response.json())
             .then(data => {
+                const commentsDate = data.map(comment => {
+                    return {
+                        ...comment,
+                        createdAt: new Date(comment.created_at).toLocaleString()
+                    }
+                })
                 console.log(data);
-                setMessages(data);
+                setMessages(commentsDate);
             });
     };
 

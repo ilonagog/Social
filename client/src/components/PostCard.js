@@ -67,6 +67,7 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
     }
 
     const commentsList = comments.map((comment) => {
+        console.log(comment)
         if (user) {
             const handleDeleteComment = (deletedComment) => {
                 fetch(`/posts/${deletedComment.id}`, {
@@ -77,11 +78,15 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                     })
             }
             return (
-                <div className='comments' key={comment.id}>
+                <div className='commentContainer' key={comment.id}>
                     <span className="postUsername">
                         {comment.username}:
                     </span>
-                    <p> {comment.content}</p>
+                    <p className="commentContent"> {comment.content}</p>
+                    <div className='commentDate'>
+
+                        <span>{comment.created_at}</span>
+                    </div>
                     {(user.id === comment.user_id) ? (
                         <div> <EditComment onEditComment={onEditComment} id={comment.id} comment={comment} />
                             <Button onClick={() => handleDeleteComment(comment)}>Delete Comment</Button>
@@ -91,11 +96,15 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
             )
         } else {
             return (
-                <div className='comments' key={comment.id}>
+                <div className='commentContainer' key={comment.id}>
                     <span className="postUsername">
                         {comment.username}:
                     </span>
-                    <p>{comment.content}</p>
+                    <p className="commentContent">{comment.content}</p>
+                    <div className='commentDate'>
+
+                        <span >{comment.created_at}</span>
+                    </div>
                 </div>
             )
         }
@@ -116,7 +125,10 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                                 <span className="postUsername">
                                     {post.author}
                                 </span>
-                                <span className="postDate">{post.date}</span>
+                                <div className='date'>
+
+                                    <span className="postDate">{post.createdAt}</span>
+                                </div>
                             </div>
                             {/* } */}
                             <div className="postTopRight">
@@ -130,6 +142,7 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                                 </IconButton>
                                 {(user.id === post.user_id) ? (
                                     <Menu
+                                        className='userEdit'
                                         anchorEl={anchorEl}
                                         keepMounted onClose={handleClose}
                                         open={open}>
@@ -188,7 +201,10 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                                 <span className="postUsername">
                                     {post.author}
                                 </span>
-                                <span className="postDate">{post.date}</span>
+                                <div className='date'>
+
+                                    <span className="postDate">{post.createdAt}</span>
+                                </div>
                             </div>
                             {/* } */}
                             <div className="postTopRight">

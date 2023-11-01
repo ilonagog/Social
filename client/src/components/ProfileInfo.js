@@ -1,22 +1,22 @@
-// import React, { useContext } from 'react'
-// import { UserContext } from '../context/UserContext'
-// import { Link } from "react-router-dom"
-// import { Button } from '@mui/material'
+import React from 'react';
 
-// const ProfileInfo = () => {
-//     const { user } = useContext(UserContext)
-//     return (
-//         <div>
-//             <p>Username: {user.username}</p>
-//             <p>Email: {user.email}</p>
-//             <p>Name: {user.name}</p>
-//             <img width="450px" src={user.image_url} />
-//             <p>Bio : {user.bio}</p>
-//             <Link to="/edit_profile">
-//                 <Button>Edit information</Button>
-//             </Link>
-//         </div>
-//     )
-// }
+// ProfileInfo component
+const ProfileInfo = ({ selectedUser }) => {
+    if (!selectedUser) {
+        return <div className="profile-info">No user selected</div>;
+    }
 
-// export default ProfileInfo
+    return (
+        <div className="profile-info">
+            <p className="profile-username">Username: {selectedUser.username}</p>
+            <p className="profile-email">Email: {selectedUser.email}</p>
+            <p className="profile-name">Name: {selectedUser.name}</p>
+            <img className="profile-image" width="450px" src={selectedUser.image_url} alt="User Avatar" />
+            <p className="profile-bio">Bio: {selectedUser.bio}</p>
+        </div>
+    );
+};
+
+
+export default ProfileInfo;
+
