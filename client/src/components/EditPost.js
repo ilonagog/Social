@@ -2,7 +2,7 @@ import { Button } from '@mobiscroll/react-lite'
 import React, { useState } from 'react'
 import mobiscroll from '@mobiscroll/react-lite';
 import "@mobiscroll/react-lite/dist/css/mobiscroll.min.css";
-const EditPost = ({ post, posts, setPosts, onUpdatePost }) => {
+const EditPost = ({ post, onUpdatePost }) => {
     const [errors, setErrors] = useState([])
     const [title, setTitle] = useState(post.title)
     const [viewForm, setViewForm] = useState(false)

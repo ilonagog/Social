@@ -128,10 +128,9 @@ const Signup = () => {
                             Bio
                         </mobiscroll.Input>
                     </div>
-                    <mobiscroll.Button type="submit">Sign In</mobiscroll.Button>
+                    <mobiscroll.Button type="submit">Create an account</mobiscroll.Button>
                 </div>
             </mobiscroll.Form>
-
             {isImage && <p style={{ color: "black" }}>Please upload an avatar image</p>}
             {errors.length > 0 && (
                 <ul>

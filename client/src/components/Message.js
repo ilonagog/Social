@@ -11,8 +11,6 @@ const Message = ({ message }) => {
                 <div>
                     <p>{message.content}</p>
                 </div>
-                {/* <p>{message.receiver_name}</p> */}
-                {/* <p>Message: {message.content}</p> */}
             </div>
         </li>
     );

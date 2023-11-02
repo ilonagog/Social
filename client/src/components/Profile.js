@@ -48,7 +48,7 @@ const Profile = () => {
                                                     <a className="social-icon dribbble" href="https://www.youtube.com/watch?v=0AmITped1KY">
                                                         <i className="fa fa-youtube-play"></i>
                                                     </a>
-                                                    <a className="social-icon github" href="https://www.youtube.com/watch?v=0AmITped1KY">
+                                                    <a className="social-icon github" href="https://github.com/ilonagog/capstone-app">
                                                         <i className="fab fa-github"></i>
                                                     </a>
                                                 </ul>

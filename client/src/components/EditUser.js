@@ -8,7 +8,6 @@ const EditUser = () => {
     const { user, setUser } = useContext(UserContext);
     const [userFormData, setUserFormData] = useState({
         username: user.username,
-
         email: user.email,
         name: user.name,
         bio: user.bio,
@@ -27,7 +26,6 @@ const EditUser = () => {
         e.preventDefault();
         const updatedUser = {
             username: userFormData.username,
-
             email: userFormData.email,
             name: userFormData.name,
             bio: userFormData.bio,
@@ -42,10 +40,8 @@ const EditUser = () => {
             body: JSON.stringify(updatedUser),
         })
             .then((resp) => {
-
                 resp.json().then((data) => setUser(data));
                 navigate('/profile');
-
             });
     };
 
@@ -65,20 +61,6 @@ const EditUser = () => {
                             Username:
                         </mobiscroll.Input>
                     </div>
-                    {/* <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
-                        <mobiscroll.Input
-                            inputStyle="box"
-                            labelStyle="floating"
-                            type="password"
-                            passwordToggle={userFormData.password === true}
-                            placeholder="Set a password"
-                            name="password"
-                            value={userFormData.password}
-                            onChange={handleChange}
-                        >
-                            Password
-                        </mobiscroll.Input>
-                    </div> */}
                     <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
                         <mobiscroll.Input
                             inputStyle="box"

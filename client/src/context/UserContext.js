@@ -9,7 +9,6 @@ const UserProvider = ({ children }) => {
     const [loggedIn, setLoggedIn] = useState(false);
     const [comments, setComments] = useState([]);
     const [messages, setMessages] = useState([]);
-    // const [selectedUser, setSelectedUser] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -19,7 +18,6 @@ const UserProvider = ({ children }) => {
                 if (data.error) {
                     setLoggedIn(false);
                 } else {
-                    // console.log(data);
                     setUser(data);
                     setLoggedIn(true);
                     fetchComments(data.comments);
@@ -32,7 +30,6 @@ const UserProvider = ({ children }) => {
         fetch("/comments")
             .then(response => response.json())
             .then(data => {
-                // console.log(data);
                 setComments(data);
             });
     };
@@ -71,14 +68,6 @@ const UserProvider = ({ children }) => {
         setUser(user);
         setLoggedIn(true);
     };
-
-
-    // const handleSelectUser = (user) => {
-    //     console.log("Selected user:", user)
-    //     setSelectedUser(user);
-    // };
-    // console.log(selectedUser)
-    // console.log(handleSelectUser)
 
     return (
         <UserContext.Provider value={{

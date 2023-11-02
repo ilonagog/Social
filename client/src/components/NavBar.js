@@ -15,8 +15,6 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
-import me from "../images/me.jpg"
-
 
 function NavBar() {
     const navigate = useNavigate()
@@ -40,7 +38,6 @@ function NavBar() {
         setAnchorElUser(null);
     };
 
-
     const logoutUser = () => {
         fetch("/logout", {
             method: "DELETE"
@@ -56,7 +53,6 @@ function NavBar() {
             <AppBar position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
                         <Typography
                             variant="h6"
                             noWrap
@@ -125,7 +121,6 @@ function NavBar() {
                                 </MenuItem>
                             </Menu>
                         </Box>
-                        {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
                         <Typography
                             variant="h5"
                             noWrap
@@ -211,7 +206,6 @@ function NavBar() {
             <AppBar position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        {/* <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} /> */}
                         <Typography
                             variant="h6"
                             noWrap
@@ -271,16 +265,9 @@ function NavBar() {
                                     >
                                         <Link to="/posts">Posts</Link>
                                     </Button>
-                                    <Button
-                                        onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, color: 'white', display: 'block' }}
-                                    >
-                                        <Link to="/messages">Messages</Link>
-                                    </Button>
                                 </MenuItem>
                             </Menu>
                         </Box>
-                        {/* <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} /> */}
                         <Typography
                             variant="h5"
                             noWrap
@@ -306,7 +293,6 @@ function NavBar() {
                             >
                                 <Link to="/">Home</Link>
                             </Button>
-
                             <Button
                                 onClick={handleCloseNavMenu}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
@@ -317,7 +303,7 @@ function NavBar() {
                         <Box sx={{ flexGrow: 0 }}>
                             <Tooltip title="Open settings">
                                 <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                    <Avatar alt="avatar" src={me} />
+                                    <Avatar alt="avatar" src="https://img.freepik.com/premium-photo/3d-rendering-people-avatar-icon-isolated-transparent-background_640106-1078.jpg?size=626&ext=jpg&ga=GA1.1.446134130.1698881548&semt=ais" />
                                 </IconButton>
                             </Tooltip>
                             <Menu

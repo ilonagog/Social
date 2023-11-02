@@ -12,12 +12,58 @@ code {
     monospace;
 }
 
+/* Customize the appearance of the FrontPage component */
+
+/* Styling for the main heading */
+h1 {
+  font-size: 2.5em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Styling for the cards */
+.Card {
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s;
+}
+
+.CardContent {
+  padding: 20px;
+}
+
+/* Styling for the card titles */
+h2 {
+  color: #333;
+}
+
+/* Styling for the card content */
+body1 {
+  color: #666;
+}
+
+/* Styling for the navigation bar */
+AppBar {
+  background-color: #2196f3;
+}
+
+Button {
+  color: #fff;
+}
+
 .css-19r6kue-MuiContainer-root {
 
-  background-color: #acb1b7;
+  background-color: #deeded;
 }
 
 .ul {
+  display: inline-flex;
+  list-style: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
   color: black;
 }
 
@@ -160,6 +206,15 @@ a {
 
 .css-1q39md6-MuiButtonBase-root-MuiButton-root {
   color: black;
+}
+
+.container {
+  display: inline-flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .post {
@@ -543,7 +598,21 @@ h6 {
   text-transform: none;
 }
 
-.mbsc-mobiscroll.mbsc-btn {}
+.mbsc-mobiscroll.mbsc-btn {
+  color: black;
+}
+
+.MuiButtonBase-root:hover,
+.MuiMenuItem-root:hover {
+  background-color: rgb(207, 250, 207) !important;
+  /* Change to any color you prefer */
+  color: rgb(24, 19, 19) !important;
+  /* Change to the desired text color for hover */
+}
+
+.mbsc-mobiscroll.mbsc-btn:hover {
+  color: #007bff;
+}
 
 .mbsc-mobiscroll.mbsc-form {
   background: none;
@@ -659,9 +728,9 @@ h5 {
 }
 
 /* chat */
-body {
+/* body {
   background: #eee;
-}
+} */
 
 .chat-list {
   padding: 0;
@@ -921,7 +990,7 @@ body {
 .mbsc-mobiscroll.mbsc-btn {
   font-family: 'Times New Roman', Times, serif;
   font-variant: petite-caps;
-
+  color: black;
   display: inherit;
   margin-left: 140px;
   width: fit-content;
@@ -944,10 +1013,17 @@ body {
   color: black;
 }
 
-.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root {
+.MuiButton {
   color: black;
 }
 
+.MuiButton-root {
+  color: black;
+}
+
+.custom-button {
+  color: black;
+}
 
 .MuiMenu-list {
   display: flex;
@@ -959,8 +1035,24 @@ body {
 }
 
 .friends {
+  padding: 20px;
   display: flex;
   justify-content: center;
+
+}
+
+.friends-block {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: #bddedc;
+  transition: box-shadow 0.3s linear;
+}
+
+.friends-block:hover {
+  box-shadow: 0 0 30px 0 #71e5a9;
+
 }
 
 h2 {
@@ -979,7 +1071,7 @@ h2 {
 
 .search {
   display: inline-flex;
-  width: 200px;
+
 }
 
 .userEdit {
@@ -1005,7 +1097,7 @@ h2 {
 }
 
 .commentContent {
-  font-size: 14px;
+  font-size: 16px;
   color: #333;
   margin-top: 10px;
 }
@@ -1030,4 +1122,23 @@ h2 {
 .profile-image {
   margin-top: 10px;
   width: inherit;
+}
+
+/* .friend-name {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  margin: 30px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+
+
+} */
+
+button {
+  color: red;
+  background-color: rgb(226 226 226);
 }

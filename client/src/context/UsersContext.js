@@ -6,7 +6,7 @@ const UsersContext = React.createContext();
 const UsersProvider = ({ children }) => {
     const { user } = useContext(UserContext)
     const [users, setUsers] = useState([]);
-    // console.log(user)
+
     useEffect(() => {
         if (user && user.id) {
             fetch('/users')

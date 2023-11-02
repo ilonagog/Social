@@ -16,10 +16,8 @@ import NewComment from './components/NewComment';
 import Profile from './components/Profile';
 import Messages from './components/Messages';
 import EditUser from './components/EditUser';
-// import ProfileInfo from './components/ProfileInfo';
 import Friends from './components/Friends';
-import CommentCard from './components/CommentCard';
-import ProfileInfo from './components/ProfileInfo';
+// import ProfileInfo from './components/ProfileInfo';
 
 
 function App() {
@@ -76,14 +74,12 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/comments" element={<Comments />} />
-            <Route path="/users/:id" element={<ProfileInfo />} />
+            {/* <Route path="/users/:id" element={<ProfileInfo />} /> */}
             <Route path="/posts/:id/comments" element={<NewComment posts={posts} setPosts={setPosts} />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/users" element={<Friends />} />
             <Route path="/users/:id/messages" element={<Messages />} />
-
             <Route path="/edit_profile" element={<EditUser />} />
-            {/* <Route path="/user_info" element={<ProfileInfo />} /> */}
           </Routes>
         </UsersProvider>
 

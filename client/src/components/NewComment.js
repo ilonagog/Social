@@ -8,7 +8,6 @@ import { Button } from '@mobiscroll/react-lite'
 
 const NewComment = ({ posts, setPosts, }) => {
     const { user, setUser } = useContext(UserContext)
-
     const [content, setContent] = useState('')
     const [errors, setErrors] = useState([])
     let { id } = useParams()

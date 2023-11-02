@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
     end
     def destroy
         user = find_user_by_session_id
-        comment= Comment.find(params[:id])
+        comment= user.comments.find(params[:id])
         comment.destroy
         head :no_content
     end

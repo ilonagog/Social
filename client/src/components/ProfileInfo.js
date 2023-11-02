@@ -1,6 +1,5 @@
 import React from 'react';
 
-// ProfileInfo component
 const ProfileInfo = ({ selectedUser }) => {
     if (!selectedUser) {
         return <div className="profile-info">No user selected</div>;

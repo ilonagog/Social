@@ -5,7 +5,7 @@ import mobiscroll from '@mobiscroll/react-lite';
 import '@mobiscroll/react-lite/dist/css/mobiscroll.min.css';
 import { Button } from '@mobiscroll/react-lite';
 
-const NewPost = ({ addPost, posts, setPosts }) => {
+const NewPost = ({ posts, setPosts }) => {
     const [errors, setErrors] = useState([]);
     const [title, setTitle] = useState('');
     const [image, setImage] = useState(null);

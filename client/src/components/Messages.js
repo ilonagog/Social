@@ -57,12 +57,11 @@ import React, { useContext, useEffect } from 'react';
 import { UserContext } from '../context/UserContext';
 import NewMessage from './NewMessage';
 import Message from './Message';
-import { Button } from '@mobiscroll/react-lite';
+
 
 
 const Messages = ({ selectedUser }) => {
     const { loggedIn, messages, setMessages, user } = useContext(UserContext);
-    // const { id } = useParams();
     console.log(selectedUser)
     useEffect(() => {
         if (selectedUser && user) {
@@ -72,20 +71,11 @@ const Messages = ({ selectedUser }) => {
                     const sortedMessages = data.sort((a, b) => new Date(a.created_at) - new Date(b.created_at));
                     setMessages(sortedMessages);
                 });
-            // .then((data) => {
-            //     const filteredMessages = data.filter(
-            //         (message) =>
-            //             (message.sender_id === user.id && message.receiver_id === selectedUser.id) ||
-            //             (message.sender_id === selectedUser.id && message.receiver_id === user.id)
-            //     );
-            //     setMessages(filteredMessages);
-            // });
         }
     }, [selectedUser, user, setMessages]);
 
     return (
         <div>
-            {/* <h3>Messages:</h3> */}
             <ul className='messages'>
                 {messages.map((message) => (
                     <Message key={message.id} message={message} />

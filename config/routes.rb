@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  resources :users, only: [:index,:show, :update] 
+  resources :users, only: [:index,:show, :update, :destroy] 
     # member do
     #   get "messages", to: "users#messages"
     # end

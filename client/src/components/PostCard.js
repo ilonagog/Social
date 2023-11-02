@@ -15,11 +15,9 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [viewComments, setViewComments] = useState(false)
     const [viewForm, setViewForm] = useState(false)
-    const { title, image_url, id, comments, author } = post
-    console.log(author)
+    const { title, image_url, id, comments } = post
     const navigate = useNavigate()
     const { user, setUser, loggedIn } = useContext(UserContext)
-
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -56,7 +54,6 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
             setUser({ ...user, uniq_p: newUserPosts })
             navigate('/posts')
         }
-
     }
     const onEditComment = (editedComment) => {
         const onPost = posts.find((post) => post.id === editedComment.post_id);
@@ -70,7 +67,7 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
         console.log(comment)
         if (user) {
             const handleDeleteComment = (deletedComment) => {
-                fetch(`/posts/${deletedComment.id}`, {
+                fetch(`/comments/${deletedComment.id}`, {
                     method: "DELETE",
                 })
                     .then(() => {
@@ -84,7 +81,6 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                     </span>
                     <p className="commentContent"> {comment.content}</p>
                     <div className='commentDate'>
-
                         <span>{comment.created_at}</span>
                     </div>
                     {(user.id === comment.user_id) ? (
@@ -102,7 +98,6 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                     </span>
                     <p className="commentContent">{comment.content}</p>
                     <div className='commentDate'>
-
                         <span >{comment.created_at}</span>
                     </div>
                 </div>
@@ -126,11 +121,9 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                                     {post.author}
                                 </span>
                                 <div className='date'>
-
                                     <span className="postDate">{post.createdAt}</span>
                                 </div>
                             </div>
-                            {/* } */}
                             <div className="postTopRight">
                                 <IconButton
                                     aria-label="more"
@@ -147,9 +140,27 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                                         keepMounted onClose={handleClose}
                                         open={open}>
                                         <MenuItem
+                                            style={{
+                                                display: 'grid',
+                                                flexDirection: 'column',
+                                                alignItems: 'flex-start',
+                                                marginTop: '4px', // Adjust margin as needed
+                                                fontSize: '14px', // Adjust font size as needed
+                                                padding: '2px 4px', // Adjust padding as needed
+                                            }}
                                         >
                                             <EditPost post={post} onUpdatePost={onUpdatePost} posts={posts} setPosts={setPosts} />
-                                            <Button onClick={handleDeletePost}>Delete Post</Button>
+                                            <Button
+                                                onClick={handleDeletePost}
+                                                style={{
+                                                    color: "black",
+                                                    marginTop: '4px', // Adjust margin as needed
+                                                    fontSize: '14px', // Adjust font size as needed
+                                                    padding: '2px 4px', // Adjust padding as needed
+                                                }}
+                                            >
+                                                Delete Post
+                                            </Button>
                                         </MenuItem>
                                     </Menu>
                                 ) : null}
@@ -188,7 +199,7 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
         )
     } else {
         return (
-            <div>
+            <div className='container'>
                 <div className="post">
                     <div className="postWrapper">
                         <div className="postTop">
@@ -202,7 +213,6 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                                     {post.author}
                                 </span>
                                 <div className='date'>
-
                                     <span className="postDate">{post.createdAt}</span>
                                 </div>
                             </div>
@@ -216,7 +226,6 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                                 >
                                     <MoreVert />
                                 </IconButton>
-
                             </div>
                         </div>
                         <div className="postCenter">
@@ -233,7 +242,6 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                                     </div>
                                 </div>
                             )}
-
                             <Link className="underline" to="/login">Login and leave your comment</Link>
                         </div>
                     </div>
@@ -242,7 +250,6 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
         )
     }
 }
-
 
 
 export default PostCard

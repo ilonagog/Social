@@ -4,7 +4,6 @@ class MessagesController < ApplicationController
     skip_before_action :authorize, only: [:index, :show]
     wrap_parameters format: []
     def index
-        # byebug
         render json: Message.all
     end
  
@@ -14,8 +13,6 @@ class MessagesController < ApplicationController
     end
 
     def create 
-        # byebug
-        # user= find_user_by_session_id
         message = Message.create!(message_params)
         render json:  message, status: :created
     end 
