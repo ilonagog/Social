@@ -5,7 +5,6 @@ import Message from './Message';
 
 const Messages = ({ selectedUser }) => {
     const { loggedIn, messages, setMessages, user } = useContext(UserContext);
-    console.log(selectedUser)
     useEffect(() => {
         if (selectedUser && user) {
             fetch(`/users/${selectedUser.id}/messages`)
