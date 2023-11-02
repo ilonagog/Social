@@ -132,13 +132,13 @@ const Signup = () => {
                 </div>
             </mobiscroll.Form>
             {isImage && <p style={{ color: "black" }}>Please upload an avatar image</p>}
-            {errors.length > 0 && (
-                <ul>
-                    {errors.map((error, index) => (
-                        <li key={index} style={{ color: "red" }}>{error}</li>
-                    ))}
-                </ul>
-            )}
+            <div className='errors'>
+                {errors && errors.map((err, i) => ( // Check if 'errors' is truthy before using the map function
+                    <ul style={{ color: 'black' }} key={i}>
+                        {err}
+                    </ul>
+                ))}
+            </div>
         </div>
     );
 };

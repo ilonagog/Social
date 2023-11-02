@@ -19,14 +19,26 @@ class User < ApplicationRecord
     validates :avatar, presence: true
     validates :username, uniqueness: true, presence: true
     validates :email, presence: true, uniqueness: true
-    PASSWORD_REQUIREMENTS = /\A
-        (?=.{8,}) #at least 8 characters log
-        (?=.*\d) #contains at least one number
-        (?=.*[a-z])# contains at least one lower case
-        (?=.*[A-Z]) #contains at least one uppercase letter
-        (?=.*[[:^alnum:]]) #contains at least one symbol
-    /x
-    validates :password, format: {with: PASSWORD_REQUIREMENTS}
+    # PASSWORD_REQUIREMENTS = /\A
+    #     (?=.{8,}) #at least 8 characters log
+    #     (?=.*\d) #contains at least one number
+    #     (?=.*[a-z])# contains at least one lower case
+    #     (?=.*[A-Z]) #contains at least one uppercase letter
+    #     (?=.*[[:^alnum:]]) #contains at least one symbol
+    # /x
+    # validates :password, format: {with: PASSWORD_REQUIREMENTS}
+  
+        PASSWORD_REQUIREMENTS = /\A
+          (?=.{8,})         # at least 8 characters long
+          (?=.*\d)          # contains at least one number
+          (?=.*[a-z])       # contains at least one lowercase letter
+          (?=.*[A-Z])       # contains at least one uppercase letter
+          (?=.*[[:^alnum:]]) # contains at least one symbol
+        /x
+      
+        validates :password, format: { with: PASSWORD_REQUIREMENTS, message: "is invalid. It must have at least 8 characters, one number, one lowercase letter, one uppercase letter, and one symbol" }
+  
+      
 end
 
 

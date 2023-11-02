@@ -42,10 +42,13 @@ class UsersController < ApplicationController
       end
    
     private
-
     def user_params
-        params.require(:user).permit(:username, :email, :name, :bio)
-    end
+        params.permit(:username, :email, :password, :name, :avatar, :bio)
+      end
+      
+    # def user_params
+    #     params.require(:user).permit(:username, :email, :name, :bio)
+    # end
 
     def current_user
         User.find_by(id: session[:user_id])

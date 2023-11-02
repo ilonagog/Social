@@ -989,7 +989,7 @@ h5 {
 
 .mbsc-mobiscroll.mbsc-btn {
   font-family: 'Times New Roman', Times, serif;
-  font-variant: petite-caps;
+  /* font-variant: petite-caps; */
   color: black;
   display: inherit;
   margin-left: 140px;
@@ -1141,4 +1141,14 @@ h2 {
 button {
   color: red;
   background-color: rgb(226 226 226);
+}
+
+.css-fa3hz2-MuiTypography-root {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color: #397560;
+}
+
+.css-ch2k2f-MuiTypography-root {
+  color: #007bff;
 }
