@@ -7,25 +7,36 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-u1 = User.first 
-u2 = User.second
-u3 = User.third
+# u1 = User.first 
+# u2 = User.second
+# u3 = User.third
 
 #user
-u6= User.create(username: "favorite", email: "ilona@gmail.com", password: "Flatiron2!", name: "Anna", bio: "I'm a student at Flatiron school !"
+u1 = User.create(username: "capstone", email: "ilona@gmail.com", password: "Flatiron2!", name: "Ilona", bio: "I'm a mother of 5year old daughter, and a student at a software bootcamp!")
+u2 =  User.create(username: "sofika", email: "sofika@gmail.com", password: "Princess2!", name: "Anna", bio: "I'm a future cyber security engineer"
 )
-u6.image.attach(io: File.open(Rails.root.join('db/images/laptop-generative.jpg')), filename: "laptop-generative.jpg")
+u3= User.create(username: "favorite", email: "ana@gmail.com", password: "Georgia2!", name: "Anna", bio: "I'm a student at Flatiron school !"
+)
+u1.avatar.attach(io: File.open(Rails.root.join('db/images/coffee-cup.jpg')), filename: "coffee-cup.jpg")
+u2.avatar.attach(io: File.open(Rails.root.join('db/images/ana.jpg')), filename: "ana.jpg")
+u3.avatar.attach(io: File.open(Rails.root.join('db/images/laptop-generative.jpg')), filename: "laptop-generative.jpg")
 
 #post 
-p6= Post.create(title: "Donating baby clothes", user_id: u6.id )
-p6.image.attach(io: File.open(Rails.root.join("db/images/pexels-photo.jpeg")), filename: "pexels-photo.jpeg")
+p1= Post.create(title: "Georgia, Ushguli", user_id: u1.id )
+p2= Post.create(title: "Rafael Nadal Parera", user_id: u2.id )
+p3= Post.create(title: "Software", user_id: u3.id )
+p1.image.attach(io: File.open(Rails.root.join("db/images/ushguli.jpg")), filename: "ushguli.jpg")
+p2.image.attach(io: File.open(Rails.root.join("db/images/nadal.jpg")), filename: "nadal.jpg")
+p3.image.attach(io: File.open(Rails.root.join("db/images/pexels-photo.jpeg")), filename: "pexels-photo.jpeg")
 
 #comment
-c6 = Comment.create(content: "I just learned how to seed data using active storage", user_id: u6.id, post_id: p6.id)
+c1 = Comment.create(content: "I just learned how to seed data using active storage", user_id: u1.id, post_id: p3.id)
+c2 = Comment.create(content: "Rafael Nadal, in full Rafael Nadal Parera, byname Rafa Nadal, (born June 3, 1986, Manacor, Mallorca, Spain), Spanish tennis player who emerged in the early 21st century as one of the game’s leading competitors, especially noted for his performance on clay. He won a record 14 career French Open championships and was the first player to win 22 Grand Slam men’s singles titles.", user_id: u2.id, post_id: p2.id)
+c3 = Comment.create(content: "Beautiful place", user_id: u3.id, post_id: p1.id)
 
 #message
-m6 = Message.create(content: "Hello Ilona, which programming languages do you know?", sender_id: u6.id, receiver_id: u1.id)
-m7 = Message.create(content: "I have learned the following programming languages: JavaScript, Ruby", sender_id: u1.id, receiver_id: u6.id)   
+m1 = Message.create(content: "Hello Ilona, which programming languages do you know?", sender_id: u3.id, receiver_id: u1.id)
+m2 = Message.create(content: "I have learned the following programming languages: JavaScript, Ruby", sender_id: u1.id, receiver_id: u3.id)   
      
     # u1 = User.create(username: "capstone", email: "ilona@gmail.com", password: "Flatiron2!", name: "Ilona", avatar: "https://static.vecteezy.com/system/resources/previews/014/212/681/original/female-user-profile-avatar-is-a-woman-a-character-for-a-screen-saver-with-emotions-for-website-and-mobile-app-design-illustration-on-a-white-isolated-background-vector.jpg", bio: "I'm a mother of 5year old daughter, and a student at a software bootcamp!")
     # u2 = User.create(username: "ikaros", email: "ilia@gmail.com", password: "Georgia1@", name: "Ilia", avatar: "https://thumbs.dreamstime.com/b/unknown-male-avatar-profile-image-businessman-vector-unknown-male-avatar-profile-image-businessman-vector-profile-179373829.jpg", bio: "I'm a father of 5year old.")
