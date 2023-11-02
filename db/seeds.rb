@@ -24,8 +24,8 @@ p6.image.attach(io: File.open(Rails.root.join("db/images/pexels-photo.jpeg")), f
 c6 = Comment.create(content: "I just learned how to seed data using active storage", user_id: u6.id, post_id: p6.id)
 
 #message
-m6 = Message.create(content: "Hello Ilona, which programming languages do you know?", sender_id: u1.id, receiver_id: u6.id)
-    
+m6 = Message.create(content: "Hello Ilona, which programming languages do you know?", sender_id: u6.id, receiver_id: u1.id)
+m7 = Message.create(content: "I have learned the following programming languages: JavaScript, Ruby", sender_id: u1.id, receiver_id: u6.id)   
      
     # u1 = User.create(username: "capstone", email: "ilona@gmail.com", password: "Flatiron2!", name: "Ilona", avatar: "https://static.vecteezy.com/system/resources/previews/014/212/681/original/female-user-profile-avatar-is-a-woman-a-character-for-a-screen-saver-with-emotions-for-website-and-mobile-app-design-illustration-on-a-white-isolated-background-vector.jpg", bio: "I'm a mother of 5year old daughter, and a student at a software bootcamp!")
     # u2 = User.create(username: "ikaros", email: "ilia@gmail.com", password: "Georgia1@", name: "Ilia", avatar: "https://thumbs.dreamstime.com/b/unknown-male-avatar-profile-image-businessman-vector-unknown-male-avatar-profile-image-businessman-vector-profile-179373829.jpg", bio: "I'm a father of 5year old.")
