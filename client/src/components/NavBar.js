@@ -188,12 +188,16 @@ function NavBar() {
                                     >
                                         <Link to="/profile">Profile</Link>
                                     </Button>
-                                    <Button
+                                    <Button onClick={logoutUser} sx={{ my: 2, color: 'black', display: 'block' }}>
+                                        Logout
+                                    </Button>
+
+                                    {/* <Button
                                         onClick={handleCloseNavMenu}
                                         sx={{ my: 2, color: 'white', display: 'block' }}
                                     >
                                         <Button onClick={logoutUser}>Logout</Button>
-                                    </Button>
+                                    </Button> */}
                                 </MenuItem>
                             </Menu>
                         </Box>

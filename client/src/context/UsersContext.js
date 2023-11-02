@@ -13,7 +13,6 @@ const UsersProvider = ({ children }) => {
                 .then((response) => response.json())
                 .then((data) => {
                     setUsers(data.filter((u) => u.id !== user.id));
-                    console.log(data);
                 })
                 .catch((error) => console.error('Error fetching users:', error));
         }

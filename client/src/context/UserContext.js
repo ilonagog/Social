@@ -44,7 +44,6 @@ const UserProvider = ({ children }) => {
                         createdAt: new Date(comment.created_at).toLocaleString()
                     }
                 })
-                console.log(data);
                 setMessages(commentsDate);
             });
     };

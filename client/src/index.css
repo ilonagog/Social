@@ -504,7 +504,7 @@ p {
 }
 
 h6 {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .card .card-block p {
@@ -514,7 +514,7 @@ h6 {
 @media only screen and (min-width: 1400px) {
   p {
     font-family: 'Times New Roman', Times, serif;
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
@@ -970,13 +970,13 @@ h5 {
 }
 
 .mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3 {
-  width: 800px;
+  width: 600px;
   background: none;
 }
 
 .mbsc-mobiscroll.mbsc-form {
   background: none;
-  width: 800px;
+  width: 600px;
   display: flow;
 }
 
@@ -984,7 +984,7 @@ h5 {
   background: none;
   background-color: rgb(189 208 241);
   border: solid;
-  width: 800px;
+  width: 600px;
 }
 
 .mbsc-mobiscroll.mbsc-btn {

@@ -64,7 +64,6 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
     }
 
     const commentsList = comments.map((comment) => {
-        console.log(comment)
         if (user) {
             const handleDeleteComment = (deletedComment) => {
                 fetch(`/comments/${deletedComment.id}`, {
