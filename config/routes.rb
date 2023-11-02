@@ -10,11 +10,6 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index,:show, :update, :destroy] 
-    # member do
-    #   get "messages", to: "users#messages"
-    # end
-    # resources :messages, only: [:create]
-  # end
   
   get '/users/:id/messages', to: 'users#user_messages' 
   
