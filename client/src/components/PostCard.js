@@ -143,9 +143,9 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                                                 display: 'grid',
                                                 flexDirection: 'column',
                                                 alignItems: 'flex-start',
-                                                marginTop: '4px', // Adjust margin as needed
-                                                fontSize: '14px', // Adjust font size as needed
-                                                padding: '2px 4px', // Adjust padding as needed
+                                                marginTop: '4px',
+                                                fontSize: '14px',
+                                                padding: '2px 4px',
                                             }}
                                         >
                                             <EditPost post={post} onUpdatePost={onUpdatePost} posts={posts} setPosts={setPosts} />
@@ -153,9 +153,9 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                                                 onClick={handleDeletePost}
                                                 style={{
                                                     color: "black",
-                                                    marginTop: '4px', // Adjust margin as needed
-                                                    fontSize: '14px', // Adjust font size as needed
-                                                    padding: '2px 4px', // Adjust padding as needed
+                                                    marginTop: '4px',
+                                                    fontSize: '14px',
+                                                    padding: '2px 4px',
                                                 }}
                                             >
                                                 Delete Post
