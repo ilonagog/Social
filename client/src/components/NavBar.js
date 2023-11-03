@@ -53,23 +53,22 @@ function NavBar() {
             <AppBar position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'none', md: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        ><Link to="/">Social</Link>
-
-                        </Typography>
+                        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                component="div"
+                                sx={{
+                                    mr: 2,
+                                    display: { xs: 'none', md: 'flex' },
+                                    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+                                    fontWeight: 500,
+                                    letterSpacing: '.3rem',
+                                }}
+                            >
+                                Social
+                            </Typography>
+                        </Link>
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
                                 size="large"
@@ -121,24 +120,22 @@ function NavBar() {
                                 </MenuItem>
                             </Menu>
                         </Box>
-                        <Typography
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'flex', md: 'none' },
-                                flexGrow: 1,
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            Social
-                        </Typography>
+                        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                component="div"
+                                sx={{
+                                    mr: 2,
+                                    display: { xs: 'none', md: 'none' },
+                                    fontFamily: 'monospace',
+                                    fontWeight: 700,
+                                    letterSpacing: '.3rem',
+                                }}
+                            >
+                                Social
+                            </Typography>
+                        </Link>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             <Button
                                 onClick={handleCloseNavMenu}
@@ -210,23 +207,22 @@ function NavBar() {
             <AppBar position="static">
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
-                        <Typography
-                            variant="h6"
-                            noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'none', md: 'flex' },
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            Social
-                        </Typography>
+                        <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                component="div"
+                                sx={{
+                                    mr: 2,
+                                    display: { xs: 'none', md: 'flex' },
+                                    fontFamily: 'monospace',
+                                    fontWeight: 700,
+                                    letterSpacing: '.3rem',
+                                }}
+                            >
+                                Social
+                            </Typography>
+                        </Link>
                         <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
                             <IconButton
                                 size="large"
