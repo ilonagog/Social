@@ -22,6 +22,7 @@ import Friends from './components/Friends';
 
 function App() {
   const [posts, setPosts] = useState([])
+  const [postEdited, setPostEdited] = useState(false);
 
   useEffect(() => {
     fetch("/posts")
@@ -56,6 +57,7 @@ function App() {
 
 
     setPosts(updatedPosts);
+    setPostEdited(true);
   };
 
 
@@ -69,7 +71,7 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/posts" element={<Posts posts={posts} setPosts={setPosts} addPost={addPost} onUpdatePost={updatePosts} />} />
+            <Route path="/posts" element={<Posts posts={posts} setPosts={setPosts} addPost={addPost} onUpdatePost={updatePosts} postEdited={postEdited} />} />
             <Route path="/posts/new" element={<NewPost addPost={addPost} posts={posts} setPosts={setPosts} />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />

@@ -11,7 +11,8 @@ import EditComment from './EditComment';
 import EditPost from './EditPost';
 
 
-const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
+const PostCard = ({ post, posts, setPosts, onUpdatePost, postEdited }) => {
+   
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [viewComments, setViewComments] = useState(false)
     const [viewForm, setViewForm] = useState(false)
@@ -132,7 +133,7 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost }) => {
                                 >
                                     <MoreVert />
                                 </IconButton>
-                                {(user.id === post.user_id) ? (
+                                {(user.id === post.user_id && !postEdited) ? (
                                     <Menu
                                         className='userEdit'
                                         anchorEl={anchorEl}

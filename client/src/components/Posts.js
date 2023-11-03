@@ -6,7 +6,8 @@ import { UserContext } from '../context/UserContext'
 import { Button } from '@mobiscroll/react-lite'
 import mobiscroll from '@mobiscroll/react-lite';
 import '@mobiscroll/react-lite/dist/css/mobiscroll.min.css';
-const Posts = ({ posts, addPost, setPosts, onUpdatePost }) => {
+const Posts = ({ posts, addPost, setPosts, onUpdatePost, postEdited, setPostEdited
+}) => {
     const [viewForm, setViewForm] = useState(false)
     const [search, setSearch] = useState('')
     const { loggedIn } = useContext(UserContext)
@@ -15,7 +16,7 @@ const Posts = ({ posts, addPost, setPosts, onUpdatePost }) => {
         .filter(post => post.user.name.toLowerCase().includes(search.toLowerCase()))
         .map(post => {
             return (
-                <PostCard key={post.id} post={post} addPost={addPost} posts={posts} setPosts={setPosts} onUpdatePost={onUpdatePost} />
+                <PostCard key={post.id} post={post} addPost={addPost} posts={posts} setPosts={setPosts} onUpdatePost={onUpdatePost} postEdited={postEdited} />
             )
         })
 
