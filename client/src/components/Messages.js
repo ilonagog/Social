@@ -20,7 +20,7 @@ const Messages = ({ selectedUser }) => {
         <div>
             <ul className='messages'>
                 {messages.map((message) => (
-                    <Message key={message.id} message={message} />
+                    <Message key={message.id} message={message} user={user}/>
                 ))}
             </ul>
             {loggedIn ? <NewMessage selectedUser={selectedUser} /> : null}

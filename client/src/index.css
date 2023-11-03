@@ -732,11 +732,11 @@ h5 {
   background: #eee;
 } */
 
-.chat-list {
+/* .chat-list {
   padding: 0;
   font-size: .8rem;
-}
-
+} */
+/* 
 .chat-list li {
   margin-bottom: 10px;
   overflow: auto;
@@ -800,9 +800,9 @@ h5 {
 
 .chat-list .out .chat-img {
   float: right;
-}
+} */
 
-.chat-list .out .chat-body {
+/* .chat-list .out .chat-body {
   float: right;
   margin-right: 20px;
   text-align: right;
@@ -816,7 +816,7 @@ h5 {
   right: -12px;
   border-bottom: 20px solid transparent;
   border-left: 20px solid #fc6d4c;
-}
+} */
 
 .card .card-header:first-child {
   -webkit-border-radius: 0.3rem 0.3rem 0 0;
@@ -845,36 +845,59 @@ h5 {
   overflow: hidden
 }
 
-.chats {
+/* .chats {
   padding: 30px 15px
-}
+} */
 
-.chat-avatar {
-  float: right
-}
 
-.chat-avatar .avatar {
-  width: 30px;
-  -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.3);
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.3);
-}
-
+/* Example CSS for styling sent and received messages */
 .chat-body {
   display: block;
-  margin: 10px 30px 0 0;
-  overflow: hidden
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 
-.chat-body:first-child {
-  margin-top: 0
+.sent {
+  align-self: flex-end;
+  background-color: #DCF8C6;
+  padding: 10px;
+  border-radius: 5px;
 }
+
+.received {
+  align-self: flex-start;
+  background-color: #F4F4F4;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.sent-text {
+  margin-inline: 10px;
+  color: rgb(188, 24, 24);
+}
+
+.received-text {
+  margin-inline: 10px;
+  color: rgb(11, 9, 9);
+}
+
+/* .chat-body {
+  display: block;
+  border: #001a27;
+  margin: 10px 30px 0 0;
+  overflow: hidden
+} */
+
+/* .chat-body:first-child {
+  margin-top: 0
+} */
 
 .chat-content {
   position: relative;
-  display: block;
-  float: right;
+  display: flex;
+  float: rght;
   padding: 8px 15px;
-  margin: auto;
+  margin-right: 30px;
   clear: both;
   color: rgb(5, 5, 5);
   background-color: #bbd8fa;
@@ -883,6 +906,7 @@ h5 {
   box-shadow: 0 1px 4px 0 rgba(0, 0, 0, 0.37);
 }
 
+/* 
 .chat-content:before {
   position: absolute;
   top: 10px;
@@ -933,7 +957,7 @@ h5 {
 
 .chat-left .chat-time {
   color: #a3afb7
-}
+} */
 
 .panel-footer {
   padding: 0 30px 15px;
