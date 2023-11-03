@@ -2,6 +2,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import React, { useContext } from 'react';
 import { UserContext } from "../context/UserContext";
+import { UsersContext } from "../context/UsersContext";
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -18,11 +19,20 @@ import MenuItem from '@mui/material/MenuItem';
 
 function NavBar() {
     const navigate = useNavigate()
+    const { setViewMessages } = useContext(UsersContext)
     const { logout, loggedIn } = useContext(UserContext)
     const { user } = useContext(UserContext)
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
 
+    //viewMessages back to false
+    // useNavigate 
+
+    const handleViewFriends = (e) => {
+        setAnchorElNav(null);
+        setViewMessages(false)
+        navigate("/users")
+    }
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
     };
@@ -112,10 +122,11 @@ function NavBar() {
                                         <Link to="/posts">Posts</Link>
                                     </Button>
                                     <Button
-                                        onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, color: 'white', display: 'block' }}
-                                    >
-                                        <Link to="/users">Friends</Link>
+                                        onClick={handleViewFriends}
+
+                                        sx={{ my: 2, color: 'black', display: 'block' }}
+                                    >Friends
+                                        {/* <Link to="/users">Friends</Link> */}
                                     </Button>
                                 </MenuItem>
                             </Menu>
@@ -150,10 +161,10 @@ function NavBar() {
                                 <Link to="/posts">Posts</Link>
                             </Button>
                             <Button
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                onClick={handleViewFriends}
+                                sx={{ my: 2, color: 'black', display: 'block' }}
                             >
-                                <Link to="/users">Friends</Link>
+                                Friends
                             </Button>
                         </Box>
                         <Box sx={{ flexGrow: 0 }}>

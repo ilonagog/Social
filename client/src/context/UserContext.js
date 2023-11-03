@@ -10,7 +10,6 @@ const UserProvider = ({ children }) => {
     const [comments, setComments] = useState([]);
     const [messages, setMessages] = useState([]);
     const navigate = useNavigate();
-
     useEffect(() => {
         fetch('/me')
             .then(response => response.json())

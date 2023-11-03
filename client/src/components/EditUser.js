@@ -37,7 +37,7 @@ const EditUser = () => {
                 'Content-Type': 'application/json',
                 Accept: 'application/json',
             },
-            body: JSON.stringify(updatedUser),
+            body: JSON.stringify({ user: updatedUser }),
         })
             .then((resp) => {
                 resp.json().then((data) => setUser(data));

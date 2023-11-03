@@ -24,8 +24,9 @@ class UsersController < ApplicationController
     end
 
     def update
-        user = User.find_by(id: params[:id])
-        if user.update(user_params)
+        # byebug
+        user = current_user
+        if user.update(update_user_params)
           render json: user, status: :accepted
         else
           render json: { errors: user.errors.full_messages }, status: :unprocessable_entity
@@ -43,12 +44,13 @@ class UsersController < ApplicationController
    
     private
     def user_params
-        params.permit(:username, :email, :password, :name, :avatar, :bio)
-      end
+        params.permit(:username, :email, :name, :avatar, :bio)
+    end
       
-    # def user_params
-    #     params.require(:user).permit(:username, :email, :name, :bio)
-    # end
+    def update_user_params
+        params.require(:user).permit(:username, :email, :name, :bio)
+    end
+      
 
     def current_user
         User.find_by(id: session[:user_id])
