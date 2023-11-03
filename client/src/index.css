@@ -1152,3 +1152,8 @@ button {
 .css-ch2k2f-MuiTypography-root {
   color: #007bff;
 }
+
+.password {
+  padding-left: 30px;
+  display: block;
+}

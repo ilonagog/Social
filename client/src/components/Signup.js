@@ -3,7 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { UserContext } from '../context/UserContext';
 import mobiscroll from '@mobiscroll/react-lite';
 import "@mobiscroll/react-lite/dist/css/mobiscroll.min.css";
+import PasswordChecklist from "react-password-checklist"
+
 const Signup = () => {
+    const [showPassword, setShowPassword] = useState("")
     const [errors, setErrors] = useState([]);
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -91,6 +94,21 @@ const Signup = () => {
                         >
                             Password
                         </mobiscroll.Input>
+                    </div>
+                    <div className='password'>
+                        <PasswordChecklist
+                            rules={["minLength", "specialChar", "number", "capital"]}
+                            minLength={8}
+                            value={password}
+                            valueAgain={showPassword}
+                            messages={{
+                                minLength: "The password must contain at least 8 characters.",
+                                specialChar: "The password must contain at least one special character.",
+                                number: "The password must contain at least one numerical digit.",
+                                capital: "The password must contain at least one uppercase letter.",
+                            }}
+                            onChange={(value) => setShowPassword(value)}
+                        />
                     </div>
                     <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
                         <mobiscroll.Input
