@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UsersContext } from '../context/UsersContext';
 
-const ProfileInfo = ({ selectedUser }) => {
+const ProfileInfo = () => {
+    const { selectedUser } = useContext(UsersContext)
     if (!selectedUser) {
         return <div className="profile-info">No user selected</div>;
     }

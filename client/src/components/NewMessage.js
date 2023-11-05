@@ -2,12 +2,13 @@ import React, { useState, useContext } from 'react';
 import { UserContext } from '../context/UserContext';
 import mobiscroll from '@mobiscroll/react-lite';
 import "@mobiscroll/react-lite/dist/css/mobiscroll.min.css";
+import { UsersContext } from '../context/UsersContext';
 
-const NewMessage = ({ selectedUser }) => {
+const NewMessage = () => {
     const { user, addMessages } = useContext(UserContext);
     const [content, setContent] = useState("");
     const [errors, setErrors] = useState([]);
-
+    const { selectedUser } = useContext(UsersContext)
     const handleSubmit = (e) => {
         e.preventDefault();
         const newMessage = {
