@@ -126,7 +126,6 @@ function NavBar() {
 
                                         sx={{ my: 2, color: 'black', display: 'block' }}
                                     >Friends
-                                        {/* <Link to="/users">Friends</Link> */}
                                     </Button>
                                 </MenuItem>
                             </Menu>
@@ -199,13 +198,6 @@ function NavBar() {
                                     <Button onClick={logoutUser} sx={{ my: 2, color: 'black', display: 'block' }}>
                                         Logout
                                     </Button>
-
-                                    {/* <Button
-                                        onClick={handleCloseNavMenu}
-                                        sx={{ my: 2, color: 'white', display: 'block' }}
-                                    >
-                                        <Button onClick={logoutUser}>Logout</Button>
-                                    </Button> */}
                                 </MenuItem>
                             </Menu>
                         </Box>

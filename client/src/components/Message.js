@@ -2,9 +2,7 @@ import React from 'react';
 
 const Message = ({ message, user }) => {
     const isSent = message.sender_id === user.id;
-
     const createdAt = new Date(message.created_at)
-
     const formattedDate = createdAt.toLocaleString('en-US', {
         month: "2-digit",
         day: "2-digit",

@@ -38,7 +38,7 @@ const Profile = () => {
                                                     <h6 className="text-muted f-w-400">{email}</h6>
                                                 </div>
                                             </div>
-                                            <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
+                                            {/* <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
 
                                             <div className="row">
                                             </div>
@@ -52,7 +52,7 @@ const Profile = () => {
                                                         <i className="fab fa-github"></i>
                                                     </a>
                                                 </ul>
-                                            </div>
+                                            </div> */}
                                         </div>
                                     </div>
                                 </div>

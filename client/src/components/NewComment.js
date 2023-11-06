@@ -51,7 +51,6 @@ const NewComment = ({ posts, setPosts, }) => {
                         setPosts(updatedPosts)
                     })
                     navigate("/posts")
-
                 } else {
                     response.json().then((err) => {
                         if (err.errors) {

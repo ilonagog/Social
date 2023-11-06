@@ -6,8 +6,7 @@ import { UserContext } from '../context/UserContext'
 import { Button } from '@mobiscroll/react-lite'
 import mobiscroll from '@mobiscroll/react-lite';
 import '@mobiscroll/react-lite/dist/css/mobiscroll.min.css';
-const Posts = ({ posts, addPost, setPosts, onUpdatePost, postEdited, setPostEdited
-}) => {
+const Posts = ({ posts, addPost, setPosts, onUpdatePost, postEdited }) => {
     const [viewForm, setViewForm] = useState(false)
     const [search, setSearch] = useState('')
     const { loggedIn } = useContext(UserContext)
