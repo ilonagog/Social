@@ -24,7 +24,7 @@ class UsersController < ApplicationController
     end
 
     def update
-        byebug
+        # byebug
         user = current_user
         if user.update(update_user_params)
           render json: user, status: :accepted

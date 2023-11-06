@@ -50,7 +50,7 @@
     has_many :comments
     has_many :posts, through: :comments
     has_one_attached :avatar
-    
+
     has_many :messages, foreign_key: :sender_id, class_name: 'Message'
     has_many :sent_messages, class_name: 'Message', foreign_key: 'sender_id'
     has_many :received_messages, class_name: 'Message', foreign_key: 'receiver_id'
@@ -71,7 +71,7 @@
       (?=.*[[:^alnum:]]) # contains at least one symbol
     /x
   
-    validates :password, presence: true, format: { with: PASSWORD_REQUIREMENTS, message: "is invalid. It must have at least 8 characters, one number, one lowercase letter, one uppercase letter, and one symbol" }
+    validates :password, presence: true, format: { with: PASSWORD_REQUIREMENTS, message: "is invalid. It must have at least 8 characters, one number, one lowercase letter, one uppercase letter, and one symbol" },  allow_nil: true
   
   end
   
