@@ -17,6 +17,7 @@ import Profile from './components/Profile';
 import Messages from './components/Messages';
 import EditUser from './components/EditUser';
 import Friends from './components/Friends';
+import NotFound from './components/NotFound';
 // import ProfileInfo from './components/ProfileInfo';
 
 
@@ -82,6 +83,7 @@ function App() {
             <Route path="/users" element={<Friends />} />
             <Route path="/users/:id/messages" element={<Messages />} />
             <Route path="/edit_profile" element={<EditUser />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </UsersProvider>
 

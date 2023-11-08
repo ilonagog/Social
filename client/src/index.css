@@ -445,7 +445,7 @@ ul {
 } */
 
 body {
-  background-color: #f9f9fa
+  background-color: #fff;
 }
 
 .padding {
@@ -1180,4 +1180,35 @@ button {
 .password {
   padding-left: 30px;
   display: block;
+}
+
+/*notfound */
+.notFound-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+}
+
+.notFound-image {
+  width: 400px;
+  height: 400px;
+}
+
+.notFound-message {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+.notFound-link {
+  text-decoration: none;
+  color: #007bff;
+}
+
+.thought-image {
+  padding-top: 5px;
+  margin-left: 300px;
+  width: 200px;
+  height: 200px;
 }

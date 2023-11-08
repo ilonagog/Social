@@ -64,14 +64,29 @@ function NavBar() {
                 <Container maxWidth="xl">
                     <Toolbar disableGutters>
                         <Link to="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                            {/* <Typography
+                                variant="h5"
+                                noWrap
+                                component="a"
+                                href="#app-bar-with-responsive-menu"
+                                sx={{
+                                    mr: 2,
+                                    display: { xs: 'flex', md: 'none' },
+                                    flexGrow: 1,
+                                    fontFamily: 'monospace',
+                                    fontWeight: 700,
+                                    letterSpacing: '.3rem',
+                                    color: 'inherit',
+                                    textDecoration: 'none',
+                                }} */}
                             <Typography
                                 variant="h6"
                                 noWrap
                                 component="div"
                                 sx={{
                                     mr: 2,
-                                    display: { xs: 'none', md: 'flex' },
-                                    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+                                    display: { xs: 'none', md: 'none' },
+                                    fontFamily: 'Times New Roman, Times, serif',
                                     fontWeight: 500,
                                     letterSpacing: '.3rem',
                                 }}
@@ -137,9 +152,9 @@ function NavBar() {
                                 component="div"
                                 sx={{
                                     mr: 2,
-                                    display: { xs: 'none', md: 'none' },
-                                    fontFamily: 'monospace',
-                                    fontWeight: 700,
+                                    display: { xs: 'none', md: 'flex' },
+                                    fontFamily: 'Times New Roman, Times, serif',
+                                    fontWeight: 500,
                                     letterSpacing: '.3rem',
                                 }}
                             >
@@ -217,9 +232,9 @@ function NavBar() {
                                 component="div"
                                 sx={{
                                     mr: 2,
-                                    display: { xs: 'none', md: 'flex' },
-                                    fontFamily: 'monospace',
-                                    fontWeight: 700,
+                                    display: { xs: 'none', md: 'none' },
+                                    fontFamily: 'Times New Roman, Times, serif',
+                                    fontWeight: 500,
                                     letterSpacing: '.3rem',
                                 }}
                             >
@@ -271,24 +286,22 @@ function NavBar() {
                                 </MenuItem>
                             </Menu>
                         </Box>
-                        <Typography
-                            variant="h5"
-                            noWrap
-                            component="a"
-                            href="#app-bar-with-responsive-menu"
-                            sx={{
-                                mr: 2,
-                                display: { xs: 'flex', md: 'none' },
-                                flexGrow: 1,
-                                fontFamily: 'monospace',
-                                fontWeight: 700,
-                                letterSpacing: '.3rem',
-                                color: 'inherit',
-                                textDecoration: 'none',
-                            }}
-                        >
-                            Social
-                        </Typography>
+                        <Link to="/">
+                            <Typography
+                                variant="h6"
+                                noWrap
+                                component="div"
+                                sx={{
+                                    mr: 2,
+                                    display: { xs: 'none', md: 'none' },
+                                    fontFamily: 'Times New Roman, Times, serif',
+                                    fontWeight: 500,
+                                    letterSpacing: '.3rem',
+                                }}
+                            >
+                                Social
+                            </Typography>
+                        </Link>
                         <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
                             <Button
                                 onClick={handleCloseNavMenu}
