@@ -4,7 +4,7 @@ import { UserContext } from '../context/UserContext';
 import mobiscroll from '@mobiscroll/react-lite';
 import "@mobiscroll/react-lite/dist/css/mobiscroll.min.css";
 import PasswordChecklist from "react-password-checklist"
-import defaultAvatar from "../images/avatar.jpg"
+import defaultAvatar from "../images/avatar.jpg";
 
 const Signup = () => {
     const [showPassword, setShowPassword] = useState('')
@@ -120,26 +120,29 @@ const Signup = () => {
                         )}
                     </div>
                     <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
-                        <mobiscroll.Input
-                            inputStyle="box"
-                            labelStyle="floating"
-                            placeholder="Upload your avatar"
-                            name="avatar"
-                            type="file"
-                            onChange={(e) => setAvatar(e.target.files[0])}
-                        >
-                            Avatar
-                        </mobiscroll.Input>
+                        {avatar ? (
+                            <img src={avatar ? URL.createObjectURL(avatar) : defaultAvatar}
+                                alt="avatar"
+                                onError={(e) => {
+                                    e.target.onerror = null;
+                                    e.target.src = defaultAvatar;
+                                }}
+                            />
+
+                        ) :
+                            < mobiscroll.Input
+                                inputStyle="box"
+                                labelStyle="floating"
+                                placeholder="Upload your avatar"
+                                name="avatar"
+                                type="file"
+                                onChange={(e) => setAvatar(e.target.files[0])}
+                            >
+                                Avatar
+                            </mobiscroll.Input>
+                        }
                     </div>
-                    <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
-                        <img src={avatar ? URL.createObjectURL(avatar) : defaultAvatar}
-                            alt="avatar"
-                            onError={(e) => {
-                                e.target.onerror = null;
-                                e.target.src = defaultAvatar;
-                            }}
-                        />
-                    </div>
+
                     <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
                         <mobiscroll.Input
                             inputStyle="box"
@@ -166,7 +169,7 @@ const Signup = () => {
                     </div>
                     <mobiscroll.Button type="submit">Create an account</mobiscroll.Button>
                 </div>
-            </mobiscroll.Form>
+            </mobiscroll.Form >
             {isImage && <p style={{ color: "black" }}>Please upload an avatar image</p>}
             <div className='errors'>
                 {errors && errors.map((err, i) => (
@@ -175,7 +178,7 @@ const Signup = () => {
                     </ul>
                 ))}
             </div>
-        </div>
+        </div >
     );
 };
 
