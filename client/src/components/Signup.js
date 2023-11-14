@@ -4,6 +4,7 @@ import { UserContext } from '../context/UserContext';
 import mobiscroll from '@mobiscroll/react-lite';
 import "@mobiscroll/react-lite/dist/css/mobiscroll.min.css";
 import PasswordChecklist from "react-password-checklist"
+import defaultAvatar from "../images/avatar.jpg"
 
 const Signup = () => {
     const [showPassword, setShowPassword] = useState('')
@@ -129,6 +130,15 @@ const Signup = () => {
                         >
                             Avatar
                         </mobiscroll.Input>
+                    </div>
+                    <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
+                        <img src={avatar ? URL.createObjectURL(avatar) : defaultAvatar}
+                            alt="avatar"
+                            onError={(e) => {
+                                e.target.onerror = null;
+                                e.target.src = defaultAvatar;
+                            }}
+                        />
                     </div>
                     <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
                         <mobiscroll.Input
