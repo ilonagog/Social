@@ -7,7 +7,11 @@ class UserSerializer < ActiveModel::Serializer
   has_many :received_messages, class_name: "Message", foreign_key: "receiver_id"
 
    def image_url
-    Rails.application.routes.url_helpers.rails_blob_path(object.avatar, only_path: true) if object.avatar.attached?
+    if object.avatar.attached?
+      Rails.application.routes.url_helpers.rails_blob_path(object.avatar, only_path: true) 
+    else
+      ActionController::Base.helpers.asset_path('app/assets/avatar.jpg')
+    end
    end
 
    def uniq_p
