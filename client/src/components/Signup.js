@@ -123,6 +123,8 @@ const Signup = () => {
                         {avatar ? (
                             <img src={avatar ? URL.createObjectURL(avatar) : defaultAvatar}
                                 alt="avatar"
+                                width="350px"
+                                height="300px"
                                 onError={(e) => {
                                     e.target.onerror = null;
                                     e.target.src = defaultAvatar;
