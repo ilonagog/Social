@@ -10,7 +10,7 @@ class UserSerializer < ActiveModel::Serializer
     if object.avatar.attached?
       Rails.application.routes.url_helpers.rails_blob_path(object.avatar, only_path: true) 
     else
-      ActionController::Base.helpers.asset_path('app/assets/avatar.jpg')
+      ActionController::Base.helpers.image_path('avatar.jpg')
     end
    end
 
