@@ -4,7 +4,7 @@ import { UserContext } from '../context/UserContext';
 import mobiscroll from '@mobiscroll/react-lite';
 import "@mobiscroll/react-lite/dist/css/mobiscroll.min.css";
 import PasswordChecklist from "react-password-checklist"
-import defaultAvatar from "../images/avatar.jpg";
+// import defaultAvatar from "../images/avatar.jpg";
 
 const Signup = () => {
     const [showPassword, setShowPassword] = useState('')
@@ -120,8 +120,8 @@ const Signup = () => {
                         )}
                     </div>
                     <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
-                        {avatar ? (
-                            <img src={avatar ? URL.createObjectURL(avatar) : defaultAvatar}
+                        {/* {avatar ? ( */}
+                        {/* <img src={avatar ? URL.createObjectURL(avatar) : defaultAvatar}
                                 alt="avatar"
                                 width="350px"
                                 height="300px"
@@ -131,18 +131,18 @@ const Signup = () => {
                                 }}
                             />
 
-                        ) :
-                            < mobiscroll.Input
-                                inputStyle="box"
-                                labelStyle="floating"
-                                placeholder="Upload your avatar"
-                                name="avatar"
-                                type="file"
-                                onChange={(e) => setAvatar(e.target.files[0])}
-                            >
-                                Avatar
-                            </mobiscroll.Input>
-                        }
+                        ) : */}
+                        < mobiscroll.Input
+                            inputStyle="box"
+                            labelStyle="floating"
+                            placeholder="Upload your avatar"
+                            name="avatar"
+                            type="file"
+                            onChange={(e) => setAvatar(e.target.files[0])}
+                        >
+                            Avatar
+                        </mobiscroll.Input>
+
                     </div>
 
                     <div className="mbsc-col-12 mbsc-col-md-6 mbsc-col-lg-3">
