@@ -2,10 +2,15 @@ import { UserContext } from '../context/UserContext'
 import { Link } from 'react-router-dom'
 import { Button } from '@mobiscroll/react-lite'
 import React, { useContext } from 'react'
+import defaultAvatar from "../images/avatar.jpg";
 
 const Profile = () => {
     const { user } = useContext(UserContext)
     const { name, image_url, bio, email } = user
+
+    const handleImage = (e) => {
+        e.target.src = defaultAvatar
+    }
 
     return (
         <>
@@ -22,7 +27,7 @@ const Profile = () => {
                                     <div className="col-sm-4 bg-c-lite-green user-profile">
                                         <div className="card-block text-center text-white">
                                             <div className="m-b-25">
-                                                <img src={image_url} width="450px" className="img-radius" alt="avatar" />
+                                                <img src={image_url} width="450px" className="img-radius" alt="avatar" onError={handleImage} />
                                             </div>
                                             <h6 className="f-w-600">{name}</h6>
                                             <p>{bio}</p>
@@ -38,21 +43,6 @@ const Profile = () => {
                                                     <h6 className="text-muted f-w-400">{email}</h6>
                                                 </div>
                                             </div>
-                                            {/* <h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Projects</h6>
-
-                                            <div className="row">
-                                            </div>
-                                            <div className='social-icons'>
-
-                                                <ul className="social-link list-unstyled m-t-40 m-b-10">
-                                                    <a className="social-icon dribbble" href="https://www.youtube.com/watch?v=0AmITped1KY">
-                                                        <i className="fa fa-youtube-play"></i>
-                                                    </a>
-                                                    <a className="social-icon github" href="https://github.com/ilonagog/capstone-app">
-                                                        <i className="fab fa-github"></i>
-                                                    </a>
-                                                </ul>
-                                            </div> */}
                                         </div>
                                     </div>
                                 </div>
