@@ -12,7 +12,7 @@ import EditPost from './EditPost';
 
 
 const PostCard = ({ post, posts, setPosts, onUpdatePost, postEdited }) => {
-   
+
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [viewComments, setViewComments] = useState(false)
     const [viewForm, setViewForm] = useState(false)
@@ -121,7 +121,7 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost, postEdited }) => {
                                     {post.author}
                                 </span>
                                 <div className='date'>
-                                    <span className="postDate">{post.createdAt}</span>
+                                    <span className="postDate">{post.created_at}</span>
                                 </div>
                             </div>
                             <div className="postTopRight">
@@ -213,7 +213,7 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost, postEdited }) => {
                                     {post.author}
                                 </span>
                                 <div className='date'>
-                                    <span className="postDate">{post.createdAt}</span>
+                                    <span className="postDate">{post.created_at}</span>
                                 </div>
                             </div>
                             {/* } */}
