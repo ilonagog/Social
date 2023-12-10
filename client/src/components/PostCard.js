@@ -216,7 +216,6 @@ const PostCard = ({ post, posts, setPosts, onUpdatePost, postEdited }) => {
                                     <span className="postDate">{post.created_at}</span>
                                 </div>
                             </div>
-                            {/* } */}
                             <div className="postTopRight">
                                 <IconButton
                                     aria-label="more"
