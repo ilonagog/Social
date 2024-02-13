@@ -16,6 +16,6 @@ class PostSerializer < ActiveModel::Serializer
   end
 
   def created_at
-    object.created_at
+    object.created_at.in_time_zone('Eastern Time (US & Canada)').strftime('%m/%d/%Y %I:%M %p')
   end
 end
